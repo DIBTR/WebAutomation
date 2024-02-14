@@ -1,0 +1,82 @@
+name: .on-demand - Release Smoke Suite
+on:
+  workflow_dispatch:
+    inputs:
+      branchName:
+        description: 'Please provide git branch name on which wish to run regression tests'
+        required: true
+        default: 'develop'
+
+      environment-for-execution:
+        type: choice
+        description: Select environment selection which need to use for execution
+        options:
+          - "dev"
+          - "develop"
+          - "uat"
+          - "prod"
+env:
+  PROJECT_ID: playwright-starter
+  SERVICE_NAME: pre-web-api
+  REGION: europe-west2
+
+jobs:
+  test:
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Print Branch Name
+        run: echo "User wish to run test suite on branch ${{github.event.inputs.branchName}}"
+        
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          ref: ${{github.event.inputs.branchName}}
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+
+      - name: Run Smoke tests for release run
+        run: npm run ci:smoke:test
+        continue-on-error: true
+
+      - name: Merge Reports
+        run: npm run merge-report
+
+      - name: List files in folder
+        run: |
+          echo "::set-output name=files::$(ls -d /home/runner/work/repair-serve-web-playwright/repair-serve-web-playwright/merged-html-report/*)"
+
+      - name: Send Build Notification Email
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtpout.secureserver.net
+          server_port: 465
+          username: 
+          password: 
+          subject: Support >> QA >> Smoke Suite >> ${{github.repository}} >> Build  >> ${{ github.run_number }} completed !
+          to: 
+          from: Automation Reporter
+          secure: true
+          body: Support >> Smoke >> ${{github.repository}} >> Build  >> ${{ github.run_number }} completed !
+          html_body: Please find attached automation execution report, click on index.html file to see test report in the browser !!!
+          ignore_cert: true
+          convert_markdown: true
+          attachments: ${{ steps.list-files.outputs.files }}
+        continue-on-error: true
+
+      - uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: playwright-report
+          path: |
+            merged-html-report/
+          retention-days: 30

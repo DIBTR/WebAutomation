@@ -1,0 +1,31 @@
+name: .Pretest On Pull Request
+'on': pull_request
+
+jobs:
+  pre-commit:
+    runs-on: ubuntu-latest
+    name: Build and validate
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - uses: actions/setup-node@master
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'npm'
+
+      - name: Install node modules
+        run: |
+          npm ci
+
+      - name: npm run pretest
+        run: |
+          npm run pretest
+
+      - name: npm run prettier:check
+        run: |
+          npm run prettier:check
+
+      - name: npm run lint
+        run: |
+          npm run lint
+

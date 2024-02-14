@@ -1,0 +1,24 @@
+import { Page } from '@playwright/test';
+import { url } from '@config';
+import { LoginPage } from '@pages/common';
+
+export default class LoginHelper {
+  readonly page: Page;
+
+  constructor(page: Page) {
+    this.page = page;
+  }
+
+  async tryLogin(username: string, password: string): Promise<void> {
+    await this.page.setViewportSize({
+      width: 1680, // min width should be 1680 to make sure web app does not change zoom
+      height: 800,
+    });
+
+    this.page.setDefaultNavigationTimeout(40000);
+    await this.page.goto(url.applicationURL);
+    await new LoginPage(this.page).enterUsername(username);
+    await new LoginPage(this.page).enterPassword(password);
+    await new LoginPage(this.page).clickSignIn();
+  }
+}
