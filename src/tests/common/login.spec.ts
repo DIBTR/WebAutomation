@@ -12,7 +12,6 @@ test.describe('@smokeSuite', () => {
 
   test('[TC-XXX] - Should be able to successful login with valid credentials @smoke', async ({ page }) => {
     const { credentialData } = store.getState();
-
     await new LoginHelper(page).tryLogin(credentialData.standard_user.username, credentialData.standard_user.password);
     await expect(page).toHaveURL(paths.standard.inventory.slug);
   });
@@ -34,7 +33,9 @@ test.describe('@smokeSuite', () => {
     await new LoginPage(page).isDataPresent('Epic sadface: Sorry, this user has been locked out.');
   });
 
-  test('[TC-XXX] - Should not be fail to login with invalid credentials to demonstrate screenshot in report @smoke', async ({ page }) => {
+  test('[TC-XXX] - Should not be fail to login with invalid credentials to demonstrate screenshot in report @smoke', async ({
+    page,
+  }) => {
     const { credentialData } = store.getState();
     await new LoginHelper(page).tryLogin(credentialData.invalid_user.username, credentialData.invalid_user.password);
     await expect(page).toHaveURL(paths.standard.inventory.slug);
