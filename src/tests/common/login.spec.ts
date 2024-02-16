@@ -33,4 +33,10 @@ test.describe('@smokeSuite', () => {
     );
     await new LoginPage(page).isDataPresent('Epic sadface: Sorry, this user has been locked out.');
   });
+
+  test('[TC-XXX] - Should not be fail to login with invalid credentials to demonstrate screenshot in report @smoke', async ({ page }) => {
+    const { credentialData } = store.getState();
+    await new LoginHelper(page).tryLogin(credentialData.invalid_user.username, credentialData.invalid_user.password);
+    await expect(page).toHaveURL(paths.standard.inventory.slug);
+  });
 });
