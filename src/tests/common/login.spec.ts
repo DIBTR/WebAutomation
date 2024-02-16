@@ -12,32 +12,75 @@ test.describe('@smokeSuite', () => {
 
   test('[TC-XXX] - Should be able to successful login with valid credentials @smoke', async ({ page }) => {
     const { credentialData } = store.getState();
-    await new LoginHelper(page).tryLogin(credentialData.standard_user.username, credentialData.standard_user.password);
-    await expect(page).toHaveURL(paths.standard.inventory.slug);
+
+    await test.step(`Given the user navigates to the login page`, async () => {
+      await new LoginHelper(page).launchApplication();
+    });
+
+    await test.step(`When user enter valid credentials and click on Sign-In`, async () => {
+      await new LoginHelper(page).tryLogin(
+        credentialData.standard_user.username,
+        credentialData.standard_user.password
+      );
+    });
+
+    await test.step(`Then user should be logged in successfully`, async () => {
+      await expect(page).toHaveURL(paths.standard.inventory.slug);
+    });
   });
 
   test('[TC-XXX] - Should not be able to successful login with invalid credentials @smoke', async ({ page }) => {
     const { credentialData } = store.getState();
-    await new LoginHelper(page).tryLogin(credentialData.invalid_user.username, credentialData.invalid_user.password);
-    await new LoginPage(page).isDataPresent(
-      'Epic sadface: Username and password do not match any user in this service'
-    );
+
+    await test.step(`Given the user navigates to the login page`, async () => {
+      await new LoginHelper(page).launchApplication();
+    });
+
+    await test.step(`When user enter invalid credentials and click on Sign-In`, async () => {
+      await new LoginHelper(page).tryLogin(credentialData.invalid_user.username, credentialData.invalid_user.password);
+    });
+
+    await test.step(`Then user should see an error message`, async () => {
+      await new LoginPage(page).isDataPresent(
+        'Epic sadface: Username and password do not match any user in this service'
+      );
+    });
   });
 
   test('[TC-XXX] - Should not be able to successful login for locked credentials @smoke', async ({ page }) => {
     const { credentialData } = store.getState();
-    await new LoginHelper(page).tryLogin(
-      credentialData.locked_out_user.username,
-      credentialData.locked_out_user.password
-    );
-    await new LoginPage(page).isDataPresent('Epic sadface: Sorry, this user has been locked out.');
+
+    await test.step(`Given the user navigates to the login page`, async () => {
+      await new LoginHelper(page).launchApplication();
+    });
+
+    await test.step(`When user enter locked user credentials and click on Sign-In`, async () => {
+      await new LoginHelper(page).tryLogin(
+        credentialData.locked_out_user.username,
+        credentialData.locked_out_user.password
+      );
+    });
+
+    await test.step(`Then user should see an error message`, async () => {
+      await new LoginPage(page).isDataPresent('Epic sadface: Sorry, this user has been locked out.');
+    });
   });
 
   test('[TC-XXX] - Should not be fail to login with invalid credentials to demonstrate screenshot in report @smoke', async ({
     page,
   }) => {
     const { credentialData } = store.getState();
-    await new LoginHelper(page).tryLogin(credentialData.invalid_user.username, credentialData.invalid_user.password);
-    await expect(page).toHaveURL(paths.standard.inventory.slug);
+
+    await test.step(`Given the user navigates to the login page`, async () => {
+      await new LoginHelper(page).launchApplication();
+    });
+
+    await test.step(`When user enter invalid user credentials and click on Sign-In`, async () => {
+      await new LoginHelper(page).tryLogin(credentialData.invalid_user.username, credentialData.invalid_user.password);
+    });
+
+    await test.step(`Then user should not able to login to application`, async () => {
+      await expect(page).toHaveURL(paths.standard.inventory.slug);
+    });
   });
 });

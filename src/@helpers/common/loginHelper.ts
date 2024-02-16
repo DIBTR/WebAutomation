@@ -9,7 +9,7 @@ export default class LoginHelper {
     this.page = page;
   }
 
-  async tryLogin(username: string, password: string): Promise<void> {
+  async launchApplication(): Promise<void> {
     await this.page.setViewportSize({
       width: 1680, // min width should be 1680 to make sure web app does not change zoom
       height: 800,
@@ -17,6 +17,9 @@ export default class LoginHelper {
 
     this.page.setDefaultNavigationTimeout(40000);
     await this.page.goto(url.applicationURL);
+  }
+
+  async tryLogin(username: string, password: string): Promise<void> {
     await new LoginPage(this.page).enterUsername(username);
     await new LoginPage(this.page).enterPassword(password);
     await new LoginPage(this.page).clickSignIn();
