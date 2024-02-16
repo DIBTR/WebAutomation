@@ -1,45 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit';
-import initialState from './initialState';
-import ForCredential from './credentialItem';
+import CredentialItem from '@models/login/credentialItem';
+
+const initialState: CredentialItem = {
+  username: '',
+  password: '',
+  userType: '',
+  userFullName: '',
+};
 
 const credentialSlice = createSlice({
   name: 'credential',
   initialState,
-  reducers: {
-    setCustomerValidLogin: (state, action) => {
-      const { credentialData } = action.payload;
-
-      const forCredential: ForCredential = {
-        username: credentialData.username,
-        password: credentialData.password,
-        userType: credentialData.userType,
-        userFullName : credentialData.userFullName
-      };
-
-      state.username = forCredential.username;
-      state.password = forCredential.password;
-      state.userType = forCredential.userType;
-      state.userFullName = forCredential.userFullName;
-    },
-
-    setCustomerInValidLogin: (state, action) => {
-      const { credentialData } = action.payload;
-
-      const forCredential: ForCredential = {
-        username: 'wrongusername',
-        password: credentialData.password,
-        userType: credentialData.userType,
-        userFullName : credentialData.userFullName
-      };
-
-      state.username = forCredential.username;
-      state.password = forCredential.password;
-      state.userType = forCredential.userType;
-      state.userFullName = forCredential.userFullName;
-    },
-  },
+  reducers: {},
 });
 
-export const { setCustomerValidLogin, setCustomerInValidLogin } = credentialSlice.actions;
+export const {} = credentialSlice.actions;
 
 export default credentialSlice.reducer;
