@@ -50,8 +50,9 @@ Ensure you have the following prerequisites installed:
 ### Installation
 
 Install project dependencies using the following command:
-
-`npm install`
+````bash
+npm install
+````
 
 ## Project Structure
 This section provides an overview of the organization and structure of the project. 
@@ -79,14 +80,22 @@ This section provides an overview of the organization and structure of the proje
 This framework provides flexibility in test execution platform selection, offering three main options: Localhost, BrowserStack, SeleniumGrid
 
 #### Localhost Execution 
-To execute tests on your local machine no need to make any change, by default it runs on localhost.
+Project is configured to run it on Localhost by default.
 
 #### Browserstack Execution
 For remote execution on the BrowserStack platform, need to pass `RUN_ON_BROWSERSTACK` parameter through command line. 
-    Example : RUN_ON_BROWSERSTACK=true npx playwright test << spec file name >>
+````bash
+ RUN_ON_BROWSERSTACK=true npx playwright test << spec file name >>
+ ````
+Replace <<spec-file>> with the actual path to your test spec file.
 
 #### SeleniumGrid Execution 
-Details coming soon...
+For remote execution on the Selenium grid platform, need to pass `SELENIUM_REMOTE_URL` parameter through command line.
+````bash
+SELENIUM_REMOTE_URL=http://localhost:4444 npx playwright test <<spec-file>>
+````
+
+Replace <<spec-file>> with the actual path to your test spec file.
 
 #### Playwright HTML Report
 + This report template is bydefault `ON` in the project. If user wish to turn off then need to disable in reporter object in playwright config file. 
@@ -101,8 +110,16 @@ Details coming soon...
 
 ### Browserstack Integration 
 To run this project on browserstack platform, user need to pass `RUN_ON_BROWSERSTACK` parameter through command line. 
+
+**Pre-requisite :**
++ BrowserStack Account: Before you start, you need to sign up for an BrowserStack account. You can create an account on the BrowserStack website[https://www.browserstack.com/].
+
++ Retrive Browserstack access token from account.
+
+    Replace the BROWSERSTACK_USERNAME and BROWSERSTACK_ACCESS_KEY in browserstack.config.ts file which is located at root directory.
 ````bash
-Example : RUN_ON_BROWSERSTACK=true npx playwright test << spec file name >>
+  'browserstack.username': process.env.BROWSERSTACK_USERNAME || '<< Enter your username >>',
+  'browserstack.accessKey': process.env.BROWSERSTACK_ACCESS_KEY || '<< enter your access key >>',
 ````
 
 **Browserstack execution dashboard :** 
@@ -125,9 +142,7 @@ Alternatively for arm architecture
 After successfully executing the following command, check [http://localhost:4444/ui](http://localhost:4444/ui). If the Selenium Grid environment is up, you are ready to run the tests.
 
 **Command to run test on Selenium Grid :**
-
-    SELENIUM_REMOTE_URL=http://localhost:4444 npx playwright test <<spec-file>>
-
+  `SELENIUM_REMOTE_URL=http://localhost:4444 npx playwright test <<spec-file>>`
 Replace <<spec-file>> with the actual path to your test spec file.
 
 ## Automation Testing Support
