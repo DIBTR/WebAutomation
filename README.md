@@ -104,15 +104,33 @@ Details coming soon...
 ## Execution Platform Support
 
 ### Browserstack Integration 
-- To run this project on browserstack platform, user need to pass `RUN_ON_BROWSERSTACK` parameter through command line. 
+To run this project on browserstack platform, user need to pass `RUN_ON_BROWSERSTACK` parameter through command line. 
 Example : RUN_ON_BROWSERSTACK=true npx playwright test << spec file name >>
 
-**Browserstack execution Dashboard :** 
+**Browserstack execution dashboard :** 
 ![alt text](/resources/browserstackExecution.png)
 
 ### SeleniumGrid Integration
-Details coming soon...
+**Pre-requisite :**
+- [Docker Desktop](https://www.docker.com/products/docker-desktop) must be installed.
 
+Setup selenium grid with the help of docker. Below is command to run selenium grid in docker. Use any one command from below as per machine architecture.
+
+    `docker run -d -p 4444:4444 --shm-size="2g" -e SE_NODE_GRID_URL="http://localhost:4444" selenium/standalone-chrome:4.3.0-20220726`
+
+Alternatively for arm architecture
+
+    `docker run -d -p 4444:4444 --shm-size="2g" -e SE_NODE_GRID_URL="http://localhost:4444" seleniarm/standalone-chromium:103.0`
+
+**Verifying Selenium Grid Environment :**
+
+After successfully executing the following command, check [http://localhost:4444/ui](http://localhost:4444/ui). If the Selenium Grid environment is up, you are ready to run the tests.
+
+**Command to run test on Selenium Grid :**
+
+    SELENIUM_REMOTE_URL=http://localhost:4444 npx playwright test <<spec-file>>
+
+Replace <<spec-file>> with the actual path to your test spec file.
 
 ## Automation Testing Support: 
 Our project offers comprehensive testing capabilities, providing automation support for various types of testing:
