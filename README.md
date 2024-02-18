@@ -180,7 +180,7 @@ Before running the visual test, set up your API key as an environment variable n
     `export APPLITOOLS_API_KEY=<your-api-key>`
 
 **Analysis Test Result on Applitools**
-+ Login to Applitools Dashboard [https://auth.applitools.com/users/login](https://auth.applitools.com/users/login) using applitools credentials 
++ Login to Applitools Dashboard [Applitools](https://auth.applitools.com/users/login) using applitools credentials 
 
 **Applitools Dashboard View:** 
 ![alt text](/resources/visual.test.view.png)
