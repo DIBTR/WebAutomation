@@ -22,7 +22,8 @@ This project is a robust and scalable automation framework built with Playwright
   - [Installation](#installation)
 - [Project Structure](#project-structure)
 - [Configuration](#configuration)
-- [Cloud Execution Platforms](#cloud-execution-platform-support)
+- [Execution Platforms](#execution-platform-support)
+  - [Localhost](#localhost)
   - [Browserstack Integration](#browserstack-integration)
   - [Selenium Grid Integration](#selenium-grid-integration)
 - [Automation Testing Support](#automation-testing-support)
@@ -115,6 +116,9 @@ Replace <<spec-file>> with the actual path to your test spec file.
 
 
 ## Execution Platform Support
+
+### Localhost
+Project is configured to run it on Localhost by default.
 
 ### Browserstack Integration 
 To run this project on browserstack platform, user need to pass `RUN_ON_BROWSERSTACK` parameter through command line. 
