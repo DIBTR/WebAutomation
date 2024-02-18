@@ -59,42 +59,26 @@ Install project dependencies using the following command:
 `npm install`
 
 ## Project Structure
-This section provides an overview of the organization and structure of the project. Understanding the project structure is essential for developers and contributors to navigate and contribute effectively.
+This section provides an overview of the organization and structure of the project. 
 
-project-root/
-│
-├── src/
-│   ├── pages/
-│   │   ├── LoginPage.ts
-│   │   ├── HomePage.ts
-│   │   └── ... (other page classes)
-│   │
-│   ├── helpers/
-│   │   ├── LoginHelper.ts
-│   │   ├── NavigationHelper.ts
-│   │   └── ... (other helper classes)
-│   │
-│   ├── utils/
-│   │   ├── Logger.ts
-│   │   ├── Config.ts
-│   │   └── ... (other utility classes)
-│   │
-│   ├── data/
-│   │   ├── testData.ts
-│   │   ├── reduxStore.ts
-│   │   └── ... (other data files)
-│   │
-│   ├── specs/
-│   │   ├── LoginSpec.ts
-│   │   ├── HomeSpec.ts
-│   │   └── ... (other spec files)
-│   │
-│   └── index.ts
-│
-├── config/
-│   ├── playwright.config.js
-│   └── tsconfig.json
-│
+`src/`: Main source code directory.
+
++ `pages/`: Contains page classes representing different pages of the application. Each page class encapsulates the actions and elements related to a specific page.
+
++ `helpers/`: Includes helper classes providing reusable functions for automation. Examples include interacting with the browser or handling common tasks.
+
++ `utils/`: Contains utility classes with general-purpose functions that can be used across the project.
+
++ `data/`: Holds data-related files, including test data and the Redux store for holding test-related data.
+
++ `specs/`: Houses spec files containing actual test scenarios. Each spec file typically corresponds to a specific feature or functionality.
+
++ `index.ts`: Acts as the entry point for the TypeScript project, where you might configure and initialize your test environment.
+
++ `config/`
+  * playwright.config.js: Playwright configuration file specifying settings for testing.
+
+  * tsconfig.json: TypeScript configuration file defining compiler options for the TypeScript project.
 
 ## Configuration
 Details coming soon...
