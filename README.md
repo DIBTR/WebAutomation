@@ -119,7 +119,7 @@ Replace <<spec-file>> with the actual path to your test spec file.
 To run this project on browserstack platform, user need to pass `RUN_ON_BROWSERSTACK` parameter through command line. 
 
 **Pre-requisite :**
-+ BrowserStack Account: Before you start, you need to sign up for an BrowserStack account. You can create an account on the BrowserStack website[https://www.browserstack.com/].
++ BrowserStack Account: Before you start, you need to sign up for an BrowserStack account. You can create an account on the [BrowserStack](https://www.browserstack.com/).
 
 + Retrive Browserstack access token from account.
 
@@ -147,7 +147,7 @@ Alternatively for arm architecture
 
 **Verifying Selenium Grid Environment :**
 
-After successfully executing the following command, check [http://localhost:4444/ui](http://localhost:4444/ui). If the Selenium Grid environment is up, you are ready to run the tests.
+After successfully executing the following command, check [Selenium Grid Portal](http://localhost:4444/ui). If the Selenium Grid environment is up, you are ready to run the tests.
 
 **Command to run test on Selenium Grid :**
 ````bash
