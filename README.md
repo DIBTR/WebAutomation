@@ -126,7 +126,7 @@ A few examples of problems this can catch include:
 
 + Upon completion of the accessibility test run, an HTML report will be generated with embedded attachments for any accessibility violations identified.
 
-![alt text](/resources/axe.png)
+![alt text](/resources/axe1.png)
 
 
 ### API Testing
