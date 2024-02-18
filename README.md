@@ -108,7 +108,24 @@ Details coming soon...
 
 
 ### Accessibility Testing
-Details coming soon...
+This sectiion incorporates accessibility testing to ensure that the web application is usable and accessible to a wide range of users, including those with disabilities. The Axe library is used to automate accessibility testing and identify potential issues.
+
+[Axe](https://www.deque.com/axe/) is an open-source JavaScript library for automated accessibility testing.By default, axe checks against a wide variety of accessibility rules. Some of these rules correspond to specific success criteria from the Web Content Accessibility Guidelines (WCAG), and others are "best practice" rules that are not specifically required by any WCAG criterion.
+
+A few examples of problems this can catch include:
+
++ Text that would be hard to read for users with vision impairments due to poor color contrast with the background behind it
++ UI controls and form elements without labels that a screen reader could identify
++ Interactive elements with duplicate IDs which can confuse assistive technologies
+
+**How to run Accissiblity Test :**
+* Command to execute accissiblity test `npx playwright test << spec file >>`.
+* Example : `npx playwright test accessibility.run.home.page.spec.ts`
+
+**Exporting scan results as a test attachment:**
+
++ Upon completion of accissiblity test run, this willl generate reports highlighting any accessibility violations.
+![alt text](/resources/acc.png)
 
 
 ### API Testing
