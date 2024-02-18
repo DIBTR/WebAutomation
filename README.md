@@ -30,6 +30,8 @@ This project is a robust and scalable automation framework built with Playwright
   - [Visual Testing](#visual-testing)
   - [Accessibility Testing](#accessibility-testing)
   - [API Testing](#api-testing)
+  - [Network Traffic Analysis Testing](#network-traffic-analysis-testing)
+  - [Console Error Testing](#console-error-testing)
 - [Reporting Support](#reporting-support)
   - [Playwright HTML Report](#playwright-html-report)
   - [Reportportal](#reportportal)
@@ -205,6 +207,23 @@ A few examples of problems this can catch include:
 
 ### API Testing
 Details coming soon...
+
+### Network Traffic Analysis Testing
+Network Traffic Analysis Testing involves inspecting and validating the network interactions between our web application and external systems. Playwright provides powerful capabilities for capturing and analyzing network traffic during test execution, allowing us to ensure that our application performs optimally, communicates securely, and handles various network conditions.
+
+Please refer `/src/tests/network-log-test` folder for sample network spec file. 
+
+**Network error capture report**
+![alt text](/resources/network.png)
+
+### Console Error Testing
+Console Error Testing focuses on verifying how our web application handles errors and exceptions, ensuring that meaningful error messages are logged to the browser's console. Playwright allows us to capture and analyze console errors during test execution, helping us maintain a stable and secure application.
+
+Please refer `/src/tests/console-error-test` folder for sample console error spec file.
+
+**Console error capture report**
+![alt text](/resources/console.png)
+
 
 ## Reporting Support
 

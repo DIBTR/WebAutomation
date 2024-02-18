@@ -16,7 +16,7 @@ test.describe('@smokeSuite', () => {
 
     page.on('response', (response) => {
       console.log(`Received response :: ${response.status()}, for endpoint :: ${response.url()}`);
-      expect(response.status(), `Validating successful response for endpoint :: ${response.url()}`).toBe(200);
+      expect(response.status(), `Validating successful response for endpoint :: ${response.url()} but found ${response.status()}`).toBe(200);
     });
 
     const { credentialData } = store.getState();
