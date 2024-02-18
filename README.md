@@ -15,12 +15,12 @@ This project is a TypeScript-based automation framework using Playwright. It sup
 - [Configuration](#configuration)
 - [Cloud Execution Platforms](#cloud)
   - Browserstack Integration
-- [Automation Support For](#usage)
+- [Automation Testing Support](#automation-testing-support)
   - [Functional E2E Testing](#functional-testing)
   - [Visual Automation](#visual-automation)
   - [Accessibility Testing](#accessibility-testing)
 - [Reporting Supports](#reporting)
-  - [Playwright html report](#html)
+  - [Playwright html report](#playwright-html-report)
   - [Reportportal Integration](#reportportal-integration)
 - [Contributing](#contributing)
 - [License](#license)
@@ -46,16 +46,18 @@ Details coming soon...
 ## Configuration
 Details coming soon...
 
-## Cloud Execution Platforms
+## Cloud Execution Platform Support
 
 ### Browserstack Integration 
 - To run this project on browserstack platform, user need to pass  parameter `RUN_ON_BROWSERSTACK` through command line. 
 Example : RUN_ON_BROWSERSTACK=true npx playwright test << spec file name >>
 
-Browserstack execution Dashboard : 
+**Browserstack execution Dashboard :** 
 ![alt text](browserstackExecution.png)
 
-## Supported Testing Types: 
+## Automation Testing Support: 
+Our project offers comprehensive testing capabilities, providing automation support for various types of testing:
+
 ### Functional Testing 
 Details coming soon...
 
@@ -67,7 +69,7 @@ Details coming soon...
 ### Accessibility Testing
 Details coming soon...
 
-## Reporting Supports:
+## Supported Report Format:
 
 ### Playwright HTML Report
 Upon completion of execution run the below command to generate HTML report.
