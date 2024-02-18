@@ -51,6 +51,7 @@ Ensure you have the following prerequisites installed:
 
 - Node.js
 - npm (Node Package Manager)
+- Docker (If want to use selenium grid)
 
 ### Installation
 
@@ -81,18 +82,29 @@ This section provides an overview of the organization and structure of the proje
   * tsconfig.json: TypeScript configuration file defining compiler options for the TypeScript project.
 
 ## Configuration
+This framework provides flexibility in test execution platform selection, offering three main options: Localhost, BrowserStack, SeleniumGrid
+
+#### Localhost Execution 
+To execute tests on your local machine no need to make any change, by default it runs on localhost.
+
+#### Browserstack Execution
+For remote execution on the BrowserStack platform, need to pass `RUN_ON_BROWSERSTACK` parameter through command line. 
+    Example : RUN_ON_BROWSERSTACK=true npx playwright test << spec file name >>
+
+#### SeleniumGrid Execution 
 Details coming soon...
 
-## Cloud Execution Platform Support
+
+## Execution Platform Support
 
 ### Browserstack Integration 
-- To run this project on browserstack platform, user need to pass  parameter `RUN_ON_BROWSERSTACK` through command line. 
+- To run this project on browserstack platform, user need to pass `RUN_ON_BROWSERSTACK` parameter through command line. 
 Example : RUN_ON_BROWSERSTACK=true npx playwright test << spec file name >>
 
 **Browserstack execution Dashboard :** 
 ![alt text](/resources/browserstackExecution.png)
 
-### Selenium Grid Integration
+### SeleniumGrid Integration
 Details coming soon...
 
 
