@@ -1,8 +1,19 @@
 import type { PlaywrightTestConfig } from '@playwright/test';
 import { devices } from '@playwright/test';
-import BrowserStackLocal from 'browserstack-local';
 import { browserStackConfig, caps, localConfig } from './browserstack.config';
 const REPORT_TYPE = process.env.REPORT_TYPE || '';
+
+const rpConfig = {
+  apiKey: 'test_l5PbyUZWS5ac8-CbsD0HRCZbeCGwgj2Gq38kU61dwCMUcdGL2kM8fv7ClbyztbTl',
+  endpoint: 'http://localhost:8080/api/v1',
+  project: 'default_personal',
+  launch: 'Automation Run',
+  restClientConfig: {
+    timeout: 0,
+  },
+  includeTestSteps: true,
+  skippedIssue: false,
+};
 
 /**
  * Read environment variables from file.
@@ -33,7 +44,11 @@ const config: PlaywrightTestConfig = {
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 5 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: [['list'], ['html', { outputFolder: `playwright-report/${REPORT_TYPE}`, open: 'never' }]],
+  reporter: [
+    ['@reportportal/agent-js-playwright', rpConfig],
+    ['list'],
+    ['html', { outputFolder: `playwright-report/${REPORT_TYPE}`, open: 'never' }],
+  ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     viewport: null,
@@ -50,15 +65,6 @@ const config: PlaywrightTestConfig = {
 
   /* Configure projects for major browsers */
   projects: [
-    {
-      name: process.env.ENV_EXECUTION === 'develop' ? 'Develop' : 'Dev',
-      use: {
-        connectOptions: {
-          wsEndpoint: `wss://cdp.browserstack.com/playwright?caps=${encodeURIComponent(JSON.stringify(caps))}`,
-        },
-      },
-    },
-
     {
       name: process.env.ENV_EXECUTION === 'develop' ? 'Develop' : 'Dev',
       use: {
@@ -118,7 +124,12 @@ const config: PlaywrightTestConfig = {
   //   port: 3000,
   // },
 };
-module.exports = process.env.RUN_ON_BROWSERSTACK === 'true' ? browserStackConfig : localConfig;
-console.log(module.exports)
-export default config;
 
+if (process.env.RUN_ON_BROWSERSTACK === 'true') {
+  console.log(`User selected execution platform Browserstack`);
+  module.exports = process.env.RUN_ON_BROWSERSTACK === 'true' ? browserStackConfig : localConfig;
+} else {
+  console.log(`User selected execution platform Localhost`);
+}
+
+export default config;

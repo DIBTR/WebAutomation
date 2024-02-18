@@ -73,8 +73,22 @@ Details coming soon...
 Details coming soon...
 
 ### Reportportal Integration
-Details coming soon...
+- Please refer below documention for Reportportal installation using docker.
+https://reportportal.io/installation
 
+After successful installation,retrive api token key from `Profile -> API Keys` section and use it in  `playwright.config.ts -> rpConfig.apiKey` object.
+
+Reportportal Dashboard :
+![alt text](image.png)
+
+Launch View :
+![alt text](image-1.png)
+
+Test Run View :
+![alt text](image-2.png)
+
+Test View : 
+![alt text](image-3.png)
 
 ## Contributing
 Details coming soon...
