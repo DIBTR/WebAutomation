@@ -258,7 +258,9 @@ Please refer `/src/tests/mock-test` folder for sample console error spec file.
 
 ### Playwright HTML Report
 Upon completion of execution run the below command to generate HTML report.
-`npx playwright show-report` 
+````bash
+npx playwright show-report
+````
 
 **Report View :** 
 ![alt text](/resources/image-5.png)
