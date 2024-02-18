@@ -44,11 +44,15 @@ const config: PlaywrightTestConfig = {
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 5 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: [
-    // ['@reportportal/agent-js-playwright', rpConfig],
-    ['list'],
-    ['html', { outputFolder: `playwright-report/${REPORT_TYPE}`, open: 'never' }],
-  ],
+  reporter:
+    process.env.LOG_RESULT_TO_REPORT_PORTAL === 'true'
+      ? [
+          ['@reportportal/agent-js-playwright', rpConfig],
+          ['list'],
+          ['html', { outputFolder: `playwright-report/${REPORT_TYPE}`, open: 'never' }],
+        ]
+      : [['list'], ['html', { outputFolder: `playwright-report/${REPORT_TYPE}`, open: 'never' }]],
+      
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     viewport: null,

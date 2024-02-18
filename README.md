@@ -1,6 +1,6 @@
 # Playwright Starter
 
-Saucelabs demo site automation using Playwright
+Demo site automation using Playwright
 
 ## Overview
 
@@ -35,6 +35,8 @@ This project is a robust and scalable automation framework built with Playwright
 - [Reporting Support](#reporting-support)
   - [Playwright HTML Report](#playwright-html-report)
   - [Reportportal](#reportportal)
+- [Test Management Support](#test-management-support)
+  - [Zephyr Integration](#zephyr-integrationt)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -88,16 +90,15 @@ Project is configured to run it on Localhost by default.
 For remote execution on the BrowserStack platform, need to pass `RUN_ON_BROWSERSTACK` parameter through command line. 
 ````bash
  RUN_ON_BROWSERSTACK=true npx playwright test << spec file name >>
+ Replace <<spec-file>> with the actual path to your test spec file.
  ````
-Replace <<spec-file>> with the actual path to your test spec file.
 
 #### SeleniumGrid Execution 
 For remote execution on the Selenium grid platform, need to pass `SELENIUM_REMOTE_URL` parameter through command line.
 ````bash
 SELENIUM_REMOTE_URL=http://localhost:4444 npx playwright test <<spec-file>>
-````
-
 Replace <<spec-file>> with the actual path to your test spec file.
+````
 
 #### Playwright HTML Report
 + This report template is bydefault `ON` in the project. If user wish to turn off then need to disable in reporter object in playwright config file. 
@@ -105,8 +106,12 @@ Replace <<spec-file>> with the actual path to your test spec file.
   
 
 #### Reportportal 
-+ For Reportportal enablement need to enable reportportal in playwright config file.
-    `['@reportportal/agent-js-playwright', rpConfig]` reporter in `playwright.config -> Reporter`.
++ For Reportportal result logging need to pass `LOG_RESULT_TO_REPORT_PORTAL` parameter through command line.
+````bash
+LOG_RESULT_TO_REPORT_PORTAL=true npx playwright test <<spec-file>>
+Replace <<spec-file>> with the actual path to your test spec file.
+````
+
 
 ## Execution Platform Support
 
@@ -118,8 +123,9 @@ To run this project on browserstack platform, user need to pass `RUN_ON_BROWSERS
 
 + Retrive Browserstack access token from account.
 
-    Replace the BROWSERSTACK_USERNAME and BROWSERSTACK_ACCESS_KEY in browserstack.config.ts file which is located at root directory.
 ````bash
+ Replace the BROWSERSTACK_USERNAME and BROWSERSTACK_ACCESS_KEY in browserstack.config.ts file which is located at root directory.
+
   'browserstack.username': process.env.BROWSERSTACK_USERNAME || '<< Enter your username >>',
   'browserstack.accessKey': process.env.BROWSERSTACK_ACCESS_KEY || '<< enter your access key >>',
 ````
@@ -144,8 +150,10 @@ Alternatively for arm architecture
 After successfully executing the following command, check [http://localhost:4444/ui](http://localhost:4444/ui). If the Selenium Grid environment is up, you are ready to run the tests.
 
 **Command to run test on Selenium Grid :**
-  `SELENIUM_REMOTE_URL=http://localhost:4444 npx playwright test <<spec-file>>`
-Replace <<spec-file>> with the actual path to your test spec file.
+````bash
+  SELENIUM_REMOTE_URL=http://localhost:4444 npx playwright test <<spec-file>>
+  Replace <<spec-file>> with the actual path to your test spec file.
+````
 
 ## Automation Testing Support
 Our project offers comprehensive testing capabilities, providing automation support for various types of testing:
@@ -155,10 +163,8 @@ To write end2end functional automated test we are using playwright, below is the
 
 ````bash
 npx playwright test <<spec file >>
-````
-
 Replace <<spec-file>> with the actual path to your test spec file.
-
+````
 
 ### Visual Testing
 This project provides robust support for visual automation testing, allowing you to efficiently validate the visual appearance of your web application across different states and screen resolutions.
@@ -174,7 +180,7 @@ Before running the visual test, set up your API key as an environment variable n
     `export APPLITOOLS_API_KEY=<your-api-key>`
 
 **Analysis Test Result on Applitools**
-+ Login to Applitools Dashboard https://auth.applitools.com/users/login using applitools credentials 
++ Login to Applitools Dashboard [https://auth.applitools.com/users/login](https://auth.applitools.com/users/login) using applitools credentials 
 
 **Applitools Dashboard View:** 
 ![alt text](/resources/visual.test.view.png)
@@ -206,7 +212,15 @@ A few examples of problems this can catch include:
 
 
 ### API Testing
-Details coming soon...
+API Testing with Playwright involves verifying the functionality and performance of our web application's APIs. Playwright provides a testing API that allows us to make HTTP requests, validate responses, and ensure the proper integration of our frontend with backend services.
+
+Please refer `/src/tests/api-test` folder for sample api spec file.
+
+Execute the API tests using the following command:
+
+````bash
+npx playwright test << spec file >>
+````
 
 ### Network Traffic Analysis Testing
 Network Traffic Analysis Testing involves inspecting and validating the network interactions between our web application and external systems. Playwright provides powerful capabilities for capturing and analyzing network traffic during test execution, allowing us to ensure that our application performs optimally, communicates securely, and handles various network conditions.
@@ -247,11 +261,18 @@ ReportPortal brings a transparent process to every testing stage and related sof
 - Make results analysis actionable & collaborative
 - Accelerate routine results analysis with AI
 
-- Please refer below section for Reportportal integration. 
+**Reportportal Installation :** 
 
-Documention for Reportportal installation using docker - https://reportportal.io/installation
+For Reportportal installation using docker please refer [Reportportal installation document](https://reportportal.io/installation)
 
-After successful installation,retrive api token key from `Profile -> API Keys` section and use it in  `playwright.config.ts -> rpConfig.apiKey` object.
++ After successful installation run - `docker-compose -p reportportal up -d --force-recreate` to bring up Reportportal application.
++ Retrive `apikey` and `Project Name` from  Reportportal application, then use in `playwright.config.ts -> rpConfig` section.
+
+````bash
+  apiKey: '<< api key from Report portal profile section>>',
+  endpoint: 'http://localhost:8080/api/v1',
+  project: '<< project name from Report portal application >>',
+  ````
 
 **Reportportal Dashboard :**
 ![alt text](/resources/image.png)
@@ -264,6 +285,14 @@ After successful installation,retrive api token key from `Profile -> API Keys` s
 
 **Test View :**
 ![alt text](/resources/image-3.png)
+
+## Test Management Support
+### Zephyr Integration
+This section provides information on how to integrate Playwright with Zephyr for Jira to log test results after each test execution.
+Integrating Playwright with Zephyr for Jira allows us to log test results directly into our test management system. This helps in maintaining a centralized repository of test execution status, enabling better traceability and reporting.
+
++ Generate an API token in Zephyr for authentication.[Refer to Zephyr's documentation](https://support.smartbear.com/zephyr-scale-cloud/docs/en/rest-api/generating-api-access-tokens.html) on how to create API tokens.
++ In ZReporter.ts file update the `Authorization: Bearer << authentication token goes here >>` with token value which retrived in above step.
 
 ## Contributing
 
