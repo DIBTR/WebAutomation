@@ -33,7 +33,7 @@ This project is a robust and scalable automation framework built with Playwright
   - [Browserstack Integration](#browserstack-integration)
   - [Selenium Grid Integration](#selenium-grid-integration)
 - [Automation Testing Support](#automation-testing-support)
-  - [Functional E2E Testing](#functional-testing)
+  - [Functional Testing](#functional-testing)
   - [Visual Automation](#visual-automation)
   - [Accessibility Testing](#accessibility-testing)
   - [API Testing](#api-testing)
