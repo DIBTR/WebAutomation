@@ -71,11 +71,11 @@ Details coming soon...
 Example : RUN_ON_BROWSERSTACK=true npx playwright test << spec file name >>
 
 **Browserstack execution Dashboard :** 
-![alt text](browserstackExecution.png)
-
+![alt text](/resources/browserstackExecution.png)
 
 ### Selenium Grid Integration
 Details coming soon...
+
 
 ## Automation Testing Support: 
 Our project offers comprehensive testing capabilities, providing automation support for various types of testing:
@@ -102,13 +102,13 @@ Upon completion of execution run the below command to generate HTML report.
 `npx playwright show-report` 
 
 **Report View :** 
-![alt text](image-5.png)
+![alt text](/resources/image-5.png)
 
 **Pass Test View :** 
-![alt text](image-4.png)
+![alt text](/resources/image-4.png)
 
 **Failed Test View :**
-![alt text](image-6.png)
+![alt text](/resources/image-6.png)
 
 
 ### Reportportal
@@ -124,16 +124,16 @@ Documention for Reportportal installation using docker - https://reportportal.io
 After successful installation,retrive api token key from `Profile -> API Keys` section and use it in  `playwright.config.ts -> rpConfig.apiKey` object.
 
 **Reportportal Dashboard :**
-![alt text](image.png)
+![alt text](/resources/image.png)
 
 **Launch View :**
-![alt text](image-1.png)
+![alt text](/resources/image-1.png)
 
 **Test Run View :**
-![alt text](image-2.png)
+![alt text](/resources/image-2.png)
 
 **Test View :**
-![alt text](image-3.png)
+![alt text](/resources/image-3.png)
 
 ## Contributing
 Details coming soon...
