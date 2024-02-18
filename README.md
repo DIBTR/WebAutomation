@@ -20,8 +20,8 @@ This project is a TypeScript-based automation framework using Playwright. It sup
   - [Visual Automation](#visual-automation)
   - [Accessibility Testing](#accessibility-testing)
 - [Reporting Supports](#reporting)
-  - [Playwright html report](#playwright-html-report)
-  - [Reportportal Integration](#reportportal-integration)
+  - [Playwright HTML Report](#playwright-html-report)
+  - [Reportportal](#reportportal)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -85,9 +85,15 @@ Upon completion of execution run the below command to generate HTML report.
 ![alt text](image-6.png)
 
 
-### Reportportal Integration
-- Please refer below documention for Reportportal installation using docker.
-https://reportportal.io/installation
+### Reportportal
+ReportPortal brings a transparent process to every testing stage and related software test reporting.
+- Manage all automation reports and results in one place
+- Make results analysis actionable & collaborative
+- Accelerate routine results analysis with AI
+
+- Please refer below section for Reportportal integration. 
+
+Documention for Reportportal installation using docker - https://reportportal.io/installation
 
 After successful installation,retrive api token key from `Profile -> API Keys` section and use it in  `playwright.config.ts -> rpConfig.apiKey` object.
 
