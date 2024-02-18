@@ -89,6 +89,9 @@ Details coming soon...
 - To run this project on browserstack platform, user need to pass  parameter `RUN_ON_BROWSERSTACK` through command line. 
 Example : RUN_ON_BROWSERSTACK=true npx playwright test << spec file name >>
 
+Browserstack execution Dashboard : 
+![alt text](browserstackExecution.png)
+
 ## Supported Testing Types: 
 ### Functional Testing 
 Details coming soon...

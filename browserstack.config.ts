@@ -4,8 +4,8 @@ export const caps = {
   os_version: 'catalina',
   name: 'Playwright Starter Project',
   build: new Date(),
-  'browserstack.username': process.env.BROWSERSTACK_USERNAME || 'jitendra_n8somz',
-  'browserstack.accessKey': process.env.BROWSERSTACK_ACCESS_KEY || 'jucy5ysgv135hCXhzsEN',
+  'browserstack.username': process.env.BROWSERSTACK_USERNAME || '',
+  'browserstack.accessKey': process.env.BROWSERSTACK_ACCESS_KEY || '',
   'browserstack.local': process.env.BROWSERSTACK_LOCAL || false,
   'client.playwrightVersion': '1.39.0',
 };
