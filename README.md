@@ -104,7 +104,26 @@ Details coming soon...
 
 
 ### Visual Testing
-Details coming soon...
+Our project provides robust support for visual automation testing, allowing you to efficiently validate the visual appearance of your web application across different states and screen resolutions.
+
+**Pre-requisite :**
++ Applitools Account: Before you start, you need to sign up for an Applitools account. You can create an account on the Applitools website.
+Applitools API Key:
+
++ Once you have an Applitools account, you need to obtain an API key. The API key is used for authentication when running visual tests. You can find your API key in the Applitools dashboard.
+
+### Applitools Integration
+Before running the visual test, set up your API key as an environment variable named APPLITOOLS_API_KEY. You may set it through your IDE (if applicable), or you may set it from the command line like this:
+    `export APPLITOOLS_API_KEY=<your-api-key>`
+
+**Analysis Test Result on Applitools**
++ Login to Applitools Dashboard https://auth.applitools.com/users/login using applitools credentials 
+
+**Applitools Dashboard View:** 
+![alt text](/resources/visual.test.view.png)
+
+**Image Comparision View :**
+![alt text](/resources/compare.png)
 
 
 ### Accessibility Testing
