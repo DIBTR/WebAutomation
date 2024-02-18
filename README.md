@@ -122,10 +122,11 @@ A few examples of problems this can catch include:
 * Command to execute accissiblity test `npx playwright test << spec file >>`.
 * Example : `npx playwright test accessibility.run.home.page.spec.ts`
 
-**Exporting scan results as a test attachment:**
+**Exporting accessibility scan results as a test attachment:**
 
-+ Upon completion of accissiblity test run, this willl generate reports highlighting any accessibility violations.
-![alt text](/resources/acc.png)
++ Upon completion of the accessibility test run, an HTML report will be generated with embedded attachments for any accessibility violations identified.
+
+![alt text](/resources/axe.png)
 
 
 ### API Testing

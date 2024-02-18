@@ -4,6 +4,7 @@ import store from '@store/store';
 import ZephyrReporter from '@utils/ZReporter';
 import paths from '@constants/paths';
 import AxeBuilder from '@axe-core/playwright';
+import { checkA11y, injectAxe } from 'axe-playwright';
 
 test.describe('@smokeSuite', () => {
   test.afterEach(async ({}, testInfo) => {
@@ -29,8 +30,10 @@ test.describe('@smokeSuite', () => {
     });
 
     await test.step(`Then perform accessibility violations for Home page`, async () => {
-      const accessibilityScanResults = await new AxeBuilder({ page }).analyze(); // 4
+      const accessibilityScanResults = await new AxeBuilder({ page }).analyze(); 
+      await injectAxe(page);
       expect.soft(accessibilityScanResults.violations).toEqual([]);
+      await checkA11y(page);
     });
   });
 });
