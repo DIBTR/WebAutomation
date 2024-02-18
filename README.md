@@ -32,6 +32,7 @@ This project is a robust and scalable automation framework built with Playwright
   - [API Testing](#api-testing)
   - [Network Traffic Analysis Testing](#network-traffic-analysis-testing)
   - [Console Error Testing](#console-error-testing)
+  - [API Mock Testing](#api-mock-testing)
 - [Reporting Support](#reporting-support)
   - [Playwright HTML Report](#playwright-html-report)
   - [Reportportal](#reportportal)
@@ -238,6 +239,20 @@ Please refer `/src/tests/console-error-test` folder for sample console error spe
 **Console error capture report**
 ![alt text](/resources/console.png)
 
+
+### API Mock Testing
+This section provides guidance on how to set up and use API mocking.Mock API tests offer several benefits, particularly in the context of software development and testing. Here are some of the key advantage:
+
++ Parallel Development
++ Avoiding External Dependencies
++ Testing Edge Cases
++ Improved Test Reliability
++ Reduced Test Flakiness
+
+Please refer `/src/tests/mock-test` folder for sample console error spec file.
+
+**Mock test report**
+![alt text](/resources/mock.png)
 
 ## Reporting Support
 
