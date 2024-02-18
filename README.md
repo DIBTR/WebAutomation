@@ -30,7 +30,7 @@ This project is a robust and scalable automation framework built with Playwright
   - [Visual Testing](#visual-testing)
   - [Accessibility Testing](#accessibility-testing)
   - [API Testing](#api-testing)
-- [Reporting Supports](#reporting)
+- [Reporting Support](#reporting-support)
   - [Playwright HTML Report](#playwright-html-report)
   - [Reportportal](#reportportal)
 - [Contributing](#contributing)
@@ -191,7 +191,7 @@ A few examples of problems this can catch include:
 ### API Testing
 Details coming soon...
 
-## Supported Report Format
+## Reporting Support
 
 ### Playwright HTML Report
 Upon completion of execution run the below command to generate HTML report.
