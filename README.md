@@ -4,7 +4,23 @@ Saucelabs demo site automation using Playwright
 
 ## Overview
 
-This project is a TypeScript-based automation framework using Playwright. It supports functional testing, visual testing, accessibility testing.
+This project is a robust and scalable automation framework built with Playwright and TypeScript, leveraging the Page Object Model (POM) design pattern. It aims to provide a structured and maintainable approach for automating web applications, ensuring ease of test creation, readability, and maintainability.It supports functional testing, visual testing, accessibility testing.
+
+## Features
++ Playwright Integration: Harness the power of Playwright, a modern and powerful browser automation library that supports multiple browsers like Chromium, Firefox, and WebKit.
+
++ TypeScript Support: Benefit from the strong typing and modern syntax provided by TypeScript, enhancing code reliability and maintainability.
+
++ Page Object Model (POM): Adopt the Page Object Model design pattern to encapsulate web pages into reusable and easily maintainable components, promoting a modular and organized test structure.
+
++ Readable and Expressive Tests: Write clear and expressive tests with TypeScript, making it easy for both developers and testers to understand and collaborate on test scripts.
+
++ Cross-Browser Testing: Execute tests across different browsers seamlessly, ensuring consistent behavior and compatibility.
+
++ Parallel Test Execution: Leverage Playwright's built-in support for parallel test execution, significantly reducing test suite execution time.
+
++ Customizable Configurations: Easily configure and adapt the framework to fit your project's specific needs through customizable configuration files
+
 
 ## Table of Contents
 
@@ -13,8 +29,9 @@ This project is a TypeScript-based automation framework using Playwright. It sup
   - [Installation](#installation)
 - [Project Structure](#project-structure)
 - [Configuration](#configuration)
-- [Cloud Execution Platforms](#cloud)
-  - Browserstack Integration
+- [Cloud Execution Platforms](#cloud-execution-platform-support)
+  - [Browserstack Integration](#browserstack-integration)
+  - [Selenium Grid Integration](#selenium-grid-integration)
 - [Automation Testing Support](#automation-testing-support)
   - [Functional E2E Testing](#functional-testing)
   - [Visual Automation](#visual-automation)
@@ -54,6 +71,10 @@ Example : RUN_ON_BROWSERSTACK=true npx playwright test << spec file name >>
 
 **Browserstack execution Dashboard :** 
 ![alt text](browserstackExecution.png)
+
+
+### Selenium Grid Integration
+Details coming soon...
 
 ## Automation Testing Support: 
 Our project offers comprehensive testing capabilities, providing automation support for various types of testing:
