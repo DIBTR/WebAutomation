@@ -59,7 +59,42 @@ Install project dependencies using the following command:
 `npm install`
 
 ## Project Structure
-Details coming soon...
+This section provides an overview of the organization and structure of the project. Understanding the project structure is essential for developers and contributors to navigate and contribute effectively.
+
+project-root/
+│
+├── src/
+│   ├── pages/
+│   │   ├── LoginPage.ts
+│   │   ├── HomePage.ts
+│   │   └── ... (other page classes)
+│   │
+│   ├── helpers/
+│   │   ├── LoginHelper.ts
+│   │   ├── NavigationHelper.ts
+│   │   └── ... (other helper classes)
+│   │
+│   ├── utils/
+│   │   ├── Logger.ts
+│   │   ├── Config.ts
+│   │   └── ... (other utility classes)
+│   │
+│   ├── data/
+│   │   ├── testData.ts
+│   │   ├── reduxStore.ts
+│   │   └── ... (other data files)
+│   │
+│   ├── specs/
+│   │   ├── LoginSpec.ts
+│   │   ├── HomeSpec.ts
+│   │   └── ... (other spec files)
+│   │
+│   └── index.ts
+│
+├── config/
+│   ├── playwright.config.js
+│   └── tsconfig.json
+│
 
 ## Configuration
 Details coming soon...
