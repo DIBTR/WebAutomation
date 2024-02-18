@@ -13,14 +13,7 @@ This project is a robust and scalable automation framework built with Playwright
 
 + Page Object Model (POM): Adopt the Page Object Model design pattern to encapsulate web pages into reusable and easily maintainable components, promoting a modular and organized test structure.
 
-+ Readable and Expressive Tests: Write clear and expressive tests with TypeScript, making it easy for both developers and testers to understand and collaborate on test scripts.
-
-+ Cross-Browser Testing: Execute tests across different browsers seamlessly, ensuring consistent behavior and compatibility.
-
-+ Parallel Test Execution: Leverage Playwright's built-in support for parallel test execution, significantly reducing test suite execution time.
-
-+ Customizable Configurations: Easily configure and adapt the framework to fit your project's specific needs through customizable configuration files
-
++ Readable and Expressive Tests: Write clear and expressive tests with BDD format, making it easy for both developers and testers to understand and collaborate on test scripts.
 
 ## Table of Contents
 
@@ -48,10 +41,11 @@ This project is a robust and scalable automation framework built with Playwright
 ### Prerequisites
 
 Ensure you have the following prerequisites installed:
-
+````bash
 - Node.js
 - npm (Node Package Manager)
-- Docker (If want to use selenium grid)
+- Docker (Optional - If wish to use Selenium Grid or Reportportal)
+````
 
 ### Installation
 
@@ -95,17 +89,21 @@ For remote execution on the BrowserStack platform, need to pass `RUN_ON_BROWSERS
 Details coming soon...
 
 #### Playwright HTML Report
-+ This report is bydefault `ON` in the framework. If user wish to turn off then need to disable `['html', { outputFolder: `playwright-report/${REPORT_TYPE}`, open: 'never' }]`reporter in `playwright.config -> Reporter` section.
++ This report template is bydefault `ON` in the project. If user wish to turn off then need to disable in reporter object in playwright config file. 
+    `['html', { outputFolder: `playwright-report/${REPORT_TYPE}`, open: 'never' }]` reporter in `playwright.config -> Reporter`.
   
 
 #### Reportportal 
-+ For Reportportal enablement need to enable `['@reportportal/agent-js-playwright', rpConfig]` reporter in `playwright.config -> Reporter` section.
++ For Reportportal enablement need to enable reportportal in playwright config file.
+    `['@reportportal/agent-js-playwright', rpConfig]` reporter in `playwright.config -> Reporter`.
 
 ## Execution Platform Support
 
 ### Browserstack Integration 
 To run this project on browserstack platform, user need to pass `RUN_ON_BROWSERSTACK` parameter through command line. 
+````bash
 Example : RUN_ON_BROWSERSTACK=true npx playwright test << spec file name >>
+````
 
 **Browserstack execution dashboard :** 
 ![alt text](/resources/browserstackExecution.png)
@@ -140,7 +138,7 @@ Details coming soon...
 
 
 ### Visual Testing
-Our project provides robust support for visual automation testing, allowing you to efficiently validate the visual appearance of your web application across different states and screen resolutions.
+This project provides robust support for visual automation testing, allowing you to efficiently validate the visual appearance of your web application across different states and screen resolutions.
 
 **Pre-requisite :**
 + Applitools Account: Before you start, you need to sign up for an Applitools account. You can create an account on the Applitools website.
