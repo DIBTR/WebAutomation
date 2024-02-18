@@ -1,6 +1,6 @@
-# Playwright Starter
-
-Demo site automation using Playwright
+# 🎭 Playwright
+Test Automation using Playwright
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
 ## Overview
 
@@ -291,7 +291,7 @@ For Reportportal installation using docker please refer [Reportportal installati
 This section provides information on how to integrate Playwright with Zephyr for Jira to log test results after each test execution.
 Integrating Playwright with Zephyr for Jira allows us to log test results directly into our test management system. This helps in maintaining a centralized repository of test execution status, enabling better traceability and reporting.
 
-+ Generate an API token in Zephyr for authentication.[Refer to Zephyr's documentation](https://support.smartbear.com/zephyr-scale-cloud/docs/en/rest-api/generating-api-access-tokens.html) on how to create API tokens.
++ Generate an API token in Zephyr for authentication.[Refer to Zephyr's documentation](https://support.smartbear.com/zephyr-scale-cloud/docs/en/rest-api/generating-api-access-tokens.html) to know how to create API token.
 + In ZReporter.ts file update the `Authorization: Bearer << authentication token goes here >>` with token value which retrived in above step.
 
 ## Contributing
