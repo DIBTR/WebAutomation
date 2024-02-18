@@ -94,6 +94,12 @@ For remote execution on the BrowserStack platform, need to pass `RUN_ON_BROWSERS
 #### SeleniumGrid Execution 
 Details coming soon...
 
+#### Playwright HTML Report
++ This report is bydefault `ON` in the framework. If user wish to turn off then need to disable `['html', { outputFolder: `playwright-report/${REPORT_TYPE}`, open: 'never' }]`reporter in `playwright.config -> Reporter` section.
+  
+
+#### Reportportal 
++ For Reportportal enablement need to enable `['@reportportal/agent-js-playwright', rpConfig]` reporter in `playwright.config -> Reporter` section.
 
 ## Execution Platform Support
 

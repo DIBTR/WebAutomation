@@ -45,7 +45,7 @@ const config: PlaywrightTestConfig = {
   workers: process.env.CI ? 5 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
-    ['@reportportal/agent-js-playwright', rpConfig],
+    // ['@reportportal/agent-js-playwright', rpConfig],
     ['list'],
     ['html', { outputFolder: `playwright-report/${REPORT_TYPE}`, open: 'never' }],
   ],
