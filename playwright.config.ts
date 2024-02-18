@@ -1,5 +1,7 @@
 import type { PlaywrightTestConfig } from '@playwright/test';
 import { devices } from '@playwright/test';
+import BrowserStackLocal from 'browserstack-local';
+import { browserStackConfig, caps, localConfig } from './browserstack.config';
 const REPORT_TYPE = process.env.REPORT_TYPE || '';
 
 /**
@@ -51,12 +53,22 @@ const config: PlaywrightTestConfig = {
     {
       name: process.env.ENV_EXECUTION === 'develop' ? 'Develop' : 'Dev',
       use: {
+        connectOptions: {
+          wsEndpoint: `wss://cdp.browserstack.com/playwright?caps=${encodeURIComponent(JSON.stringify(caps))}`,
+        },
+      },
+    },
+
+    {
+      name: process.env.ENV_EXECUTION === 'develop' ? 'Develop' : 'Dev',
+      use: {
         channel: 'chrome',
         headless: process.env.CI == 'true' ? true : false,
         trace: 'off',
         video: 'off',
       },
     },
+
     // {
     //   name: 'firefox',
     //   use: {
@@ -106,5 +118,7 @@ const config: PlaywrightTestConfig = {
   //   port: 3000,
   // },
 };
-
+module.exports = process.env.RUN_ON_BROWSERSTACK === 'true' ? browserStackConfig : localConfig;
+console.log(module.exports)
 export default config;
+
