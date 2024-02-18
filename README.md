@@ -130,7 +130,7 @@ After successfully executing the following command, check [http://localhost:4444
 
 Replace <<spec-file>> with the actual path to your test spec file.
 
-## Automation Testing Support: 
+## Automation Testing Support
 Our project offers comprehensive testing capabilities, providing automation support for various types of testing:
 
 ### Functional Testing 
@@ -191,7 +191,7 @@ A few examples of problems this can catch include:
 ### API Testing
 Details coming soon...
 
-## Supported Report Format:
+## Supported Report Format
 
 ### Playwright HTML Report
 Upon completion of execution run the below command to generate HTML report.
