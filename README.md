@@ -134,7 +134,13 @@ Replace <<spec-file>> with the actual path to your test spec file.
 Our project offers comprehensive testing capabilities, providing automation support for various types of testing:
 
 ### Functional Testing 
-Details coming soon...
+To write end2end functional automated test we are using playwright, below is the command to run functional test using npm.
+
+````bash
+npx playwright test <<spec file >>
+````
+
+Replace <<spec-file>> with the actual path to your test spec file.
 
 
 ### Visual Testing
@@ -226,8 +232,6 @@ After successful installation,retrive api token key from `Profile -> API Keys` s
 ![alt text](/resources/image-3.png)
 
 ## Contributing
-Details coming soon...
 
 
 ## License
-Details coming soon...
