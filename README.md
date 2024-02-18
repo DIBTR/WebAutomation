@@ -4,7 +4,7 @@ Saucelabs demo site automation using Playwright
 
 ## Overview
 
-This project is a robust and scalable automation framework built with Playwright and TypeScript, leveraging the Page Object Model (POM) design pattern. It aims to provide a structured and maintainable approach for automating web applications, ensuring ease of test creation, readability, and maintainability.It supports functional testing, visual testing, accessibility testing.
+This project is a robust and scalable automation framework built with Playwright and TypeScript, leveraging the Page Object Model (POM) design pattern. It aims to provide a structured and maintainable approach for automating web applications, ensuring ease of test creation, readability, and maintainability.
 
 ## Features
 + Playwright Integration: Harness the power of Playwright, a modern and powerful browser automation library that supports multiple browsers like Chromium, Firefox, and WebKit.
@@ -36,6 +36,7 @@ This project is a robust and scalable automation framework built with Playwright
   - [Functional E2E Testing](#functional-testing)
   - [Visual Automation](#visual-automation)
   - [Accessibility Testing](#accessibility-testing)
+  - [API Testing](#api-testing)
 - [Reporting Supports](#reporting)
   - [Playwright HTML Report](#playwright-html-report)
   - [Reportportal](#reportportal)
@@ -88,6 +89,10 @@ Details coming soon...
 
 
 ### Accessibility Testing
+Details coming soon...
+
+
+### API Testing
 Details coming soon...
 
 ## Supported Report Format:
