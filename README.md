@@ -97,16 +97,16 @@ Project is configured to run it on Localhost by default.
 #### Browserstack Execution
 For remote execution on the BrowserStack platform, need to pass `RUN_ON_BROWSERSTACK` parameter through command line. 
 ````bash
- RUN_ON_BROWSERSTACK=true npx playwright test << spec file name >>
- Replace <<spec-file>> with the actual path to your test spec file.
+RUN_ON_BROWSERSTACK=true npx playwright test << spec file name >>
  ````
+Replace << spec-file >> with the actual path to your test spec file. 
 
 #### SeleniumGrid Execution 
 For remote execution on the Selenium grid platform, need to pass `SELENIUM_REMOTE_URL` parameter through command line.
 ````bash
-SELENIUM_REMOTE_URL=http://localhost:4444 npx playwright test <<spec-file>>
-Replace <<spec-file>> with the actual path to your test spec file.
+SELENIUM_REMOTE_URL=http://localhost:4444 npx playwright test << spec-file >>
 ````
+Replace << spec-file >> with the actual path to your test spec file.
 
 #### Playwright HTML Report
 + This report template is bydefault `ON` in the project. If user wish to turn off then need to disable in reporter object in playwright config file. 
@@ -114,12 +114,13 @@ Replace <<spec-file>> with the actual path to your test spec file.
   
 
 #### Reportportal 
-+ For Reportportal result logging need to pass `LOG_RESULT_TO_REPORT_PORTAL` parameter through command line.
-````bash
-LOG_RESULT_TO_REPORT_PORTAL=true npx playwright test <<spec-file>>
-Replace <<spec-file>> with the actual path to your test spec file.
-````
 
+For Reportportal result logging need to pass `LOG_RESULT_TO_REPORT_PORTAL` parameter through command line.
+
+````bash
+LOG_RESULT_TO_REPORT_PORTAL=true npx playwright test <<spec-file >>
+````
+Replace <<spec-file>> with the actual path to your test spec file.
 
 ## Execution Platform Support
 
