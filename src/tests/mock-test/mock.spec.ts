@@ -10,8 +10,7 @@ test.describe('@smokeSuite', () => {
     await test.step(`Given the user navigates to application home page`, async () => {
       await page.goto('https://demo.playwright.dev/api-mocking');
     });
-
-    // Assert that the Strawberry fruit is visible
+    
     await test.step(`Then user should see all Available Fruit options`, async () => {
       await expect(page.getByText('Strawberry')).toBeVisible();
     });
