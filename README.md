@@ -109,23 +109,22 @@ SELENIUM_REMOTE_URL=http://localhost:4444 npx playwright test << spec-file >>
 Replace << spec-file >> with the actual path to your test spec file.
 
 #### Playwright HTML Report
-+ This report template is bydefault `ON` in the project. If user wish to turn off then need to disable in reporter object in playwright config file. 
-    `['html', { outputFolder: `playwright-report/${REPORT_TYPE}`, open: 'never' }]` reporter in `playwright.config -> Reporter`.
+This project is designed with Playwright html report enabled by default
   
 
 #### Reportportal 
 
-For Reportportal result logging need to pass `LOG_RESULT_TO_REPORT_PORTAL` parameter through command line.
+To enable Reportportal result logging, user need to pass `LOG_RESULT_TO_REPORT_PORTAL` parameter through command line.
 
 ````bash
-LOG_RESULT_TO_REPORT_PORTAL=true npx playwright test <<spec-file >>
+LOG_RESULT_TO_REPORT_PORTAL=true npx playwright test << spec-file >>
 ````
-Replace <<spec-file>> with the actual path to your test spec file.
+Replace << spec-file >> with the actual path to your test spec file.
 
 ## Execution Platform Support
 
 ### Localhost
-Project is configured to run it on Localhost by default.
+This project is designed with localhost execution enabled by default
 
 ### Browserstack Integration 
 
