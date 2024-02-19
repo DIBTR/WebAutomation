@@ -40,6 +40,7 @@ This project is a robust and scalable automation framework built with Playwright
 - [Reporting Support](#reporting-support)
   - [Playwright HTML Report](#playwright-html-report)
   - [Reportportal](#reportportal)
+- [Performance Test Engineering](#performance-test-engineering)
 - [Test Management Support](#test-management-support)
   - [Zephyr Integration](#zephyr-integrationt)
 - [Contributing](#contributing)
@@ -358,6 +359,9 @@ For Reportportal installation using docker please refer [Reportportal installati
 
 **Test View :**
 ![alt text](/resources/image-3.png)
+
+## Performance Test Engineering
+Data coming soon ...
 
 ## Test Management Support
 
