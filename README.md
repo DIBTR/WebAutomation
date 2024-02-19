@@ -361,8 +361,29 @@ For Reportportal installation using docker please refer [Reportportal installati
 ![alt text](/resources/image-3.png)
 
 ## Performance Test Engineering
-Data coming soon ...
+This sections demonstrates how to conduct performance testing using Artillery and Playwright, combining the power of Artillery for load testing and Playwright for headless browser automation. By simulating user interactions with Playwright, we can evaluate the performance and scalability of web applications under realistic scenarios.
 
+Please refer [Artillery Documention](https://www.artillery.io/docs)
+
+Please refer [Artillery Installation](https://www.artillery.io/docs/get-started/get-artillery)
+
+Command to run test :
+````bash
+artillery run --output test-run-report.json browser-load-test.yml
+````
+Generate to report :
+````bash
+artillery report test-run-report.json
+````
+````bash
+Root directory of project.
+````
+
+Report file name : 
+
+```bash 
+test-run-report.json.html
+````
 ## Test Management Support
 
 ### Zephyr Integration
