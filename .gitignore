@@ -140,3 +140,6 @@ node_modules/
 
 # never push this file to git
 merged-html-report
+
+# never push this file to git
+.env

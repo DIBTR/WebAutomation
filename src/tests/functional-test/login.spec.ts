@@ -6,7 +6,9 @@ import { LoginPage } from '@pages/common';
 import paths from '@constants/paths';
 
 test.describe('@smokeSuite', () => {
-  test.afterEach(async ({}, testInfo) => {
+  test.afterEach(async ({page}, testInfo) => {
+    const screenshot = await page.screenshot();
+    await testInfo.attach('screenshot', { body: screenshot, contentType: 'image/png' });
     await new ZephyrReporter().updateTestResultInZephyr(testInfo.title, testInfo.status);
   });
 

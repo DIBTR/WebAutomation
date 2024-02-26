@@ -1,13 +1,17 @@
 import type { PlaywrightTestConfig } from '@playwright/test';
 import { devices } from '@playwright/test';
 import { browserStackConfig, caps, localConfig } from './browserstack.config';
+import dotenv from 'dotenv';
+dotenv.config();
+const apiKey = process.env.REPORT_PORTAL_API_KEY; 
 const REPORT_TYPE = process.env.REPORT_TYPE || '';
 
+
 const rpConfig = {
-  apiKey: 'test_l5PbyUZWS5ac8-CbsD0HRCZbeCGwgj2Gq38kU61dwCMUcdGL2kM8fv7ClbyztbTl',
-  endpoint: 'http://localhost:8080/api/v1',
+  apiKey: apiKey,
+  endpoint: 'http://35.214.28.20:8080/api/v1',
   project: 'default_personal',
-  launch: 'Automation Run',
+  launch: `Automation Run ${new Date().toLocaleDateString()}`,
   restClientConfig: {
     timeout: 0,
   },

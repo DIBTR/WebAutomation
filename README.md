@@ -40,7 +40,7 @@ This project is a robust and scalable automation framework built with Playwright
   - [API Mock Testing](#api-mock-testing)
 - [Reporting Support](#reporting-support)
   - [Playwright HTML Report](#playwright-html-report)
-  - [Reportportal](#reportportal)
+  - [Reportportal Integration](#reportportal-integration)
 - [Performance Test Engineering](#performance-test-engineering)
 - [Test Management Support](#test-management-support)
   - [Zephyr Integration](#zephyr-integrationt)
@@ -351,7 +351,7 @@ npx playwright show-report
 ![alt text](/resources/image-6.png)
 
 
-### Reportportal
+### Reportportal Integration
 
 ReportPortal brings a transparent process to every testing stage and related software test reporting.
 - Manage all automation reports and results in one place
