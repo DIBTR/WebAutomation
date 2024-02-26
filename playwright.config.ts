@@ -3,7 +3,7 @@ import { devices } from '@playwright/test';
 import { browserStackConfig, caps, localConfig } from './browserstack.config';
 import dotenv from 'dotenv';
 dotenv.config();
-const apiKey = process.env.REPORT_PORTAL_API_KEY; 
+const apiKey = process.env.REPORT_PORTAL_API_KEY;  // please keep api key in .env file or set it as environment variable.
 const REPORT_TYPE = process.env.REPORT_TYPE || '';
 
 
