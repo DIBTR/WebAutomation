@@ -28,7 +28,8 @@ This project is a robust and scalable automation framework built with Playwright
 - [Execution Platforms](#execution-platform-support)
   - [Localhost](#localhost)
   - [Browserstack Integration](#browserstack-integration)
-  - [Selenium Grid Integration](#selenium-grid-integration)
+  - [Selenium Grid Hosted on Local Machine Using Docker](#selenium-grid-hosted-on-local-machine-using-docker)
+  - [Selenium Grid Hosted on GCP Cloud](#selenium-grid-hosted-on-gcp-cloud)
 - [Automation Testing Support](#automation-testing-support)
   - [Functional Testing](#functional-testing)
   - [Visual Testing](#visual-testing)
@@ -146,7 +147,7 @@ Replace the BROWSERSTACK_USERNAME and BROWSERSTACK_ACCESS_KEY in `browserstack.c
 **Browserstack execution dashboard :** 
 ![alt text](/resources/browserstackExecution.png)
 
-### SeleniumGrid Integration
+### Selenium Grid Hosted on Local Machine Using Docker
 **Pre-requisite :**
 - [Docker Desktop](https://www.docker.com/products/docker-desktop) must be installed.
 
@@ -167,6 +168,28 @@ After successfully executing the following command, check [Selenium Grid Portal]
 SELENIUM_REMOTE_URL=http://localhost:4444 npx playwright test <<spec-file>>
 ````
 Replace << spec-file >> with the actual path to your test spec file.
+
+### Selenium Grid Hosted on GCP Cloud
+**Pre-requisite :**
+- [Docker Desktop](https://www.docker.com/products/docker-desktop) is installed on the GCP VM.
+
+Setup selenium grid with the help of docker. Below is command to run selenium grid in docker on GCP VM.
+
+````bash
+    docker run -d -p 4444:4444 --shm-size="2g" -e SE_NODE_GRID_URL="http://localhost:4444" selenium/standalone-chrome:4.3.0-20220726
+````
+
+**Verifying Selenium Grid Environment :**
+
+After successfully executing the following command, check [Selenium Grid Portal](http://35.214.28.20:4444/ui). If the Selenium Grid environment is up, you are ready to run the tests.
+
+**Command to run test on Selenium Grid :**
+
+````bash
+SELENIUM_REMOTE_URL=http://35.214.28.20:4444/ npx playwright test <<spec-file>>
+````
+Replace << spec-file >> with the actual path to your test spec file.
+
 
 ## Automation Testing Support
 Our project offers comprehensive testing capabilities, providing automation support for various types of testing:
