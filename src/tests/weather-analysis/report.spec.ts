@@ -21,7 +21,7 @@ test.describe('@smokeSuite', () => {
       await new HomePage(page).clickOnContinueAsGuest();
     });
 
-    await test.step(`AndWhen a user selects a location on the map using coordinates { Latitude : 66 Longitude : -33 }`, async () => {
+    await test.step(`And When a user selects a location on the map using coordinates { Latitude : 66 Longitude : -33 }`, async () => {
       await new SideBarPage(page).clickOnWeatherAnalysisSelector();
       await new WeatherAnalysisPage(page).clickOnLocationOnMap();
     });
