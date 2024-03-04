@@ -79,7 +79,10 @@ const config: PlaywrightTestConfig = {
         channel: 'chrome',
         headless: process.env.CI == 'true' ? true : false,
         trace: 'off',
-        video: 'off',
+        video: {
+          mode: 'off',
+          size: { width: 1680, height: 800 }
+        }
       },
     },
 
