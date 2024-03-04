@@ -11,8 +11,7 @@ test.describe('@smokeSuite', () => {
     await new ZephyrReporter().updateTestResultInZephyr(testInfo.title, testInfo.status);
   });
 
-  test('[TC-XXX] - Should be able to run Persistance weather analysis with 8 hsrs window @smoke', async ({ page }) => {
-    
+  test('[TC-XXX] - Should be able to run Persistance weather analysis with 8 hr window @smoke', async ({ page }) => {
     await test.step(`Given User navigate to the home page`, async () => {
       await new LoginHelper(page).launchApplication();
     });
@@ -22,7 +21,7 @@ test.describe('@smokeSuite', () => {
       await new HomePage(page).clickOnContinueAsGuest();
     });
 
-    await test.step(`And When User select location on map`, async () => {
+    await test.step(`And When User select location on map on co-ordinates { Latitude : 66 Longitude : -33 }`, async () => {
       await new SideBarPage(page).clickOnWeatherAnalysisSelector();
       await new WeatherAnalysisPage(page).clickOnLocationOnMap();
     });
