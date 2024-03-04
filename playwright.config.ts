@@ -3,9 +3,8 @@ import { devices } from '@playwright/test';
 import { browserStackConfig, caps, localConfig } from './browserstack.config';
 import dotenv from 'dotenv';
 dotenv.config();
-const apiKey = process.env.REPORT_PORTAL_API_KEY;  // please keep api key in .env file or set it as environment variable.
+const apiKey = process.env.REPORT_PORTAL_API_KEY; // please keep api key in .env file or set it as environment variable.
 const REPORT_TYPE = process.env.REPORT_TYPE || '';
-
 
 const rpConfig = {
   apiKey: apiKey,
@@ -56,7 +55,7 @@ const config: PlaywrightTestConfig = {
           ['html', { outputFolder: `playwright-report/${REPORT_TYPE}`, open: 'never' }],
         ]
       : [['list'], ['html', { outputFolder: `playwright-report/${REPORT_TYPE}`, open: 'never' }]],
-      
+
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     viewport: null,
@@ -77,12 +76,15 @@ const config: PlaywrightTestConfig = {
       name: process.env.ENV_EXECUTION === 'develop' ? 'Develop' : 'Dev',
       use: {
         channel: 'chrome',
-        headless: process.env.CI == 'true' ? true : false,
+        launchOptions: {
+          headless: process.env.CI == 'true' ? true : false,
+          slowMo: 100,
+        },
         trace: 'off',
         video: {
           mode: 'off',
-          size: { width: 1680, height: 800 }
-        }
+          size: { width: 1680, height: 800 },
+        },
       },
     },
 
