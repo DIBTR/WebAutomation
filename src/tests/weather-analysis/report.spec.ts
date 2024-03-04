@@ -12,7 +12,7 @@ test.describe('@smokeSuite', () => {
   });
 
   test('[TC-XXX] - Should be able to run Persistance weather analysis with 8 hr window @smoke', async ({ page }) => {
-    await test.step(`Given User navigate to the home page`, async () => {
+    await test.step(`Given the user navigates to the home page`, async () => {
       await new LoginHelper(page).launchApplication();
     });
 
@@ -21,23 +21,23 @@ test.describe('@smokeSuite', () => {
       await new HomePage(page).clickOnContinueAsGuest();
     });
 
-    await test.step(`And When User select location on map on co-ordinates { Latitude : 66 Longitude : -33 }`, async () => {
+    await test.step(`AndWhen a user selects a location on the map using coordinates { Latitude : 66 Longitude : -33 }`, async () => {
       await new SideBarPage(page).clickOnWeatherAnalysisSelector();
       await new WeatherAnalysisPage(page).clickOnLocationOnMap();
     });
 
-    await test.step(`Then capture and assert Weather Analysis graph view`, async () => {
+    await test.step(`Then capture and assert the Weather Analysis graph view for correctness`, async () => {
       await new WeatherAnalysisPage(page).captureAndAssertGraphSnapshot();
     });
 
-    await test.step(`And When User run persistance weather analysis with 8 Hrs window`, async () => {
+    await test.step(`And when the user runs Persistence Weather Analysis with an 8-hour window`, async () => {
       await new WeatherAnalysisPage(page).clickOnPersistenceAnalysis();
       await new WeatherAnalysisPage(page).clickOnWeatherWindow();
       await new WeatherAnalysisPage(page).selectWeatherWindow('8');
       await new WeatherAnalysisPage(page).clickOnRunAnalysis();
     });
 
-    await test.step(`Then capture and assert Persistent Analysis Results Dialogue view`, async () => {
+    await test.step(`Then capture and assert the Persistent Analysis Results Dialogue view for correctness`, async () => {
       await new WeatherAnalysisPage(page).waitUntillPersistenceAnalysisResults();
       await new WeatherAnalysisPage(page).captureAndAssertPersistentAnalysisResultsDialogueSnapshot();
     });
