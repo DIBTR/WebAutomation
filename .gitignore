@@ -143,3 +143,6 @@ merged-html-report
 
 # never push this file to git
 .env
+
+# Allow .png files in the baseline/ folder
+!baseline-screenshots/*.png
