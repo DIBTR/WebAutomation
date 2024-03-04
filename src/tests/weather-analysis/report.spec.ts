@@ -12,7 +12,8 @@ test.describe('@smokeSuite', () => {
   });
 
   test('[TC-XXX] - Should be able to run Persistance weather analysis with 8 hsrs window @smoke', async ({ page }) => {
-    await test.step(`Given the user navigates to the login page`, async () => {
+    
+    await test.step(`Given User navigate to the home page`, async () => {
       await new LoginHelper(page).launchApplication();
     });
 
