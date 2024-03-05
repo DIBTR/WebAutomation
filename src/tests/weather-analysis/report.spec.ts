@@ -7,7 +7,6 @@ import SideBarPage from '@pages/common/side.bar.page';
 import WeatherAnalysisPage from '@pages/weatherAnalysis/weather.analysis.page';
 import store from '@store/store';
 import { setPersistentAnalysisReport } from '@test-data/weatherAnalysis/weatherAnalysisReport.slice';
-import locationDetails from '@constants/locations';
 
 test.describe('@smokeSuite', () => {
   test.afterEach(async ({}, testInfo) => {
@@ -34,9 +33,9 @@ test.describe('@smokeSuite', () => {
       await new HomePage(page).clickOnContinueAsGuest();
     });
 
-    await test.step(`And When a user selects a location on the map using coordinates ${JSON.stringify(locationDetails.NAO)}`, async () => {
+    await test.step(`And When a user selects a location on the map using coordinates ${JSON.stringify(forPersistenceAnalysisReport.locationDetails)}`, async () => {
       await new SideBarPage(page).clickOnWeatherAnalysisSelector();
-      await new WeatherAnalysisPage(page).clickOnLocationOnMap(locationDetails.NAO);
+      await new WeatherAnalysisPage(page).clickOnLocationOnMap(forPersistenceAnalysisReport.locationDetails);
     });
 
     await test.step(`Then capture and assert the Weather Analysis graph view for correctness`, async () => {

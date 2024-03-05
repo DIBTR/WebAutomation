@@ -1,12 +1,12 @@
 export default {
   DEV: {
     env: 'dev',
-    applicationURL: 'https://vektadigital.com/vekta-digital',
+    applicationURL: 'https://vektadigital.com/',
     customerCompanyToUse: 'dev-dibtr',
   },
   DEVELOP: {
     env: 'develop',
-    applicationURL: 'https://vektadigital.com/vekta-digital',
+    applicationURL: 'https://vektadigital.com/',
     customerCompanyToUse: 'develop-dibtr',
   },
   DEMO: {

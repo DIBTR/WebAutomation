@@ -8,7 +8,9 @@ const weatherAnalysis = createSlice({
   reducers: {
     setPersistentAnalysisReport: (state, action) => {
       const { weatherAnalysisData } = action.payload;
+      
       const forPersistenceAnalysisReport: ForPersistenceAnalysisReport = {
+        locationDetails: weatherAnalysisData.locationDetails,
         source: weatherAnalysisData.source,
         windHeight: weatherAnalysisData.windHeight,
         persistenceAnalysis: {
@@ -17,6 +19,7 @@ const weatherAnalysis = createSlice({
           wavePeriod: weatherAnalysisData.persistenceAnalysis.wavePeriod,
           meanWindSpeed: weatherAnalysisData.persistenceAnalysis.meanWindSpeed,
         },
+       
       };
       state.details.forPersistenceAnalysisReport = forPersistenceAnalysisReport;
     },

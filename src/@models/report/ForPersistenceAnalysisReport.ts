@@ -1,10 +1,13 @@
+import LocationCoordinates from "@models/ForLocation"
+
 export default interface ForPersistenceAnalysisReport {
-  source : string,
-  windHeight :[],
-  persistenceAnalysis : {
-    weatherWindow : [''],
-    significantWaveHeight : [''],
-    wavePeriod:[''],
-    meanWindSpeed:['']
+  locationDetails: LocationCoordinates,
+  source: string,
+  windHeight: [],
+  persistenceAnalysis: {
+    weatherWindow: [''],
+    significantWaveHeight: [''],
+    wavePeriod: [''],
+    meanWindSpeed: ['']
   }
 }

@@ -1,6 +1,8 @@
+import locations from '@constants/LocationsDetails';
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
+  locationDetails: locations.NAO,
   source : 'ECMWF Reanalysis v5 (ERA5)',
   windHeight :[10],
   persistenceAnalysis : {
