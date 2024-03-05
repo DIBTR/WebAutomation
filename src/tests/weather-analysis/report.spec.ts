@@ -42,9 +42,13 @@ test.describe('@smokeSuite', () => {
       await new WeatherAnalysisPage(page).captureAndAssertGraphSnapshot();
     });
 
-    await test.step(`And when the user runs Persistence Weather Analysis with an 8-hour window`, async () => {
+    await test.step(`And When the user runs Persistence Weather Analysis with ${JSON.stringify(forPersistenceAnalysisReport.persistenceAnalysis)} window`, async () => {
       await new WeatherAnalysisPage(page).clickOnPersistenceAnalysis();
+      await new WeatherAnalysisPage(page).selectWindHeight(forPersistenceAnalysisReport.windHeight);
       await new WeatherAnalysisPage(page).selectWeatherWindow(forPersistenceAnalysisReport.persistenceAnalysis.weatherWindow);
+      await new WeatherAnalysisPage(page).selectSignificantWaveHeight(forPersistenceAnalysisReport.persistenceAnalysis.significantWaveHeight);
+      await new WeatherAnalysisPage(page).selectWavePeriod(forPersistenceAnalysisReport.persistenceAnalysis.wavePeriod);
+      await new WeatherAnalysisPage(page).selectMeanWindSpeed(forPersistenceAnalysisReport.persistenceAnalysis.meanWindSpeed);
       await new WeatherAnalysisPage(page).clickOnRunAnalysis();
     });
 

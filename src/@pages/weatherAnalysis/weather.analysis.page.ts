@@ -32,16 +32,58 @@ export default class WeatherAnalysisPage {
     await this.page.locator(this.persistenceAnalysisCollapseSelector).click();
   }
 
-  async clickOnWeatherWindow(): Promise<void> {
-    await this.page.locator('[class*="persistenceOption"]>div>div>div~div>input').first().click();
+  async clickOnDropDown(nth : number): Promise<void> {
+    await this.page.locator('[class*="persistenceOption"]>div>div>div~div>input').nth(nth).click();
+  }
+
+  async selectWindHeight(windHeightToSelect: []): Promise<void> {
+    console.log(`Selecting wind height :: ${windHeightToSelect}`);
+    await this.page.locator('[class*="-indicatorContainer"]').nth(0).click();
+    for (let i = 0; i < windHeightToSelect.length; i++) {
+      console.log(`Selecting wind height :: ${windHeightToSelect[i]}`);
+      await this.page.locator('[class*="weatherOption"]>div>div>div~div>input').nth(0).click();
+      await this.page.waitForTimeout(1000);
+      await this.page.getByText(windHeightToSelect[i], { exact: true }).click();
+      await this.page.waitForTimeout(1000);
+    }
   }
 
   async selectWeatherWindow(windowToSelect: ['']): Promise<void> {
     for (let i = 0; i < windowToSelect.length; i++) {
       console.log(`Selecting weather window :: ${windowToSelect[i].toString().trim()}`);
-      this.clickOnWeatherWindow();
+      this.clickOnDropDown(0);
       await this.page.waitForTimeout(1000);
       await this.page.getByText(windowToSelect[i].toString().trim(), { exact: true }).click();
+      await this.page.waitForTimeout(1000);
+    }
+  }
+
+  async selectSignificantWaveHeight(waveHeight: ['']): Promise<void> {
+    for (let i = 0; i < waveHeight.length; i++) {
+      console.log(`Selecting Significant Wave Height :: ${waveHeight[i].toString().trim()}`);
+      this.clickOnDropDown(1);
+      await this.page.waitForTimeout(1000);
+      await this.page.getByText(waveHeight[i].toString().trim(), { exact: true }).click();
+      await this.page.waitForTimeout(1000);
+    }
+  }
+
+  async selectWavePeriod(wavePeriod: ['']): Promise<void> {
+    for (let i = 0; i < wavePeriod.length; i++) {
+      console.log(`Selecting Wave Period :: ${wavePeriod[i].toString().trim()}`);
+      this.clickOnDropDown(2);
+      await this.page.waitForTimeout(1000);
+      await this.page.getByText(wavePeriod[i].toString().trim(), { exact: true }).last().click();
+      await this.page.waitForTimeout(1000);
+    }
+  }
+
+  async selectMeanWindSpeed(windSpeed: ['']): Promise<void> {
+    for (let i = 0; i < windSpeed.length; i++) {
+      console.log(`Selecting Mean Wind Speed :: ${windSpeed[i].toString().trim()}`);
+      this.clickOnDropDown(3);
+      await this.page.waitForTimeout(1000);
+      await this.page.getByText(windSpeed[i].toString().trim(), { exact: true }).last().click();
       await this.page.waitForTimeout(1000);
     }
   }

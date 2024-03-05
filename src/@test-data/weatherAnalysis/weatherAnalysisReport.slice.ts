@@ -11,7 +11,7 @@ const weatherAnalysis = createSlice({
       
       const forPersistenceAnalysisReport: ForPersistenceAnalysisReport = {
         locationDetails: weatherAnalysisData.locationDetails,
-        source: weatherAnalysisData.source,
+        source: weatherAnalysisData.source,    
         windHeight: weatherAnalysisData.windHeight,
         persistenceAnalysis: {
           weatherWindow: weatherAnalysisData.persistenceAnalysis.weatherWindow,

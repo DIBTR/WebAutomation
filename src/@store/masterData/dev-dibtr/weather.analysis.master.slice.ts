@@ -4,12 +4,12 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   locationDetails: locations.NAO,
   source : 'ECMWF Reanalysis v5 (ERA5)',
-  windHeight :[10],
+  windHeight :[100],
   persistenceAnalysis : {
-    weatherWindow : [8],
-    significantWaveHeight : [1.75, 2],
+    weatherWindow : [8,12],
+    significantWaveHeight : [1.75],
     wavePeriod:[10],
-    meanWindSpeed:[8,10]
+    meanWindSpeed:[8]
   }
 };
 
