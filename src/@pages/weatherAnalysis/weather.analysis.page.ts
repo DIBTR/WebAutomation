@@ -14,14 +14,14 @@ export default class WeatherAnalysisPage {
     this.page = page;
   }
 
-  async clickOnLocationOnMap(): Promise<void> {
+  async clickOnLocationOnMap(locationDetails: any): Promise<void> {
     await this.page.waitForSelector(this.mapContainerSelector);
     await this.page.waitForTimeout(5000);
     await expect(this.page.locator(this.canvasSelector)).toBeVisible();
     await this.page.locator(this.canvasSelector).click({
       position: {
-        x: 516,
-        y: 360,
+        x: locationDetails.positionOnMap.x,
+        y: locationDetails.positionOnMap.y,
       },
     });
     await this.page.waitForSelector(this.speedDistrubutionGraphSelector);
@@ -36,15 +36,21 @@ export default class WeatherAnalysisPage {
     await this.page.locator('[class*="persistenceOption"]>div>div>div~div>input').first().click();
   }
 
-  async selectWeatherWindow(windowToSelect: string): Promise<void> {
-    await this.page.getByText(windowToSelect, { exact: true }).click();
+  async selectWeatherWindow(windowToSelect: ['']): Promise<void> {
+    for (let i = 0; i < windowToSelect.length; i++) {
+      console.log(`Selecting weather window :: ${windowToSelect[i].toString().trim()}`);
+      this.clickOnWeatherWindow();
+      await this.page.waitForTimeout(1000);
+      await this.page.getByText(windowToSelect[i].toString().trim(), { exact: true }).click();
+      await this.page.waitForTimeout(1000);
+    }
   }
 
   async clickOnRunAnalysis(): Promise<void> {
     await this.page.getByRole('button', { name: 'Run Analysis' }).click();
   }
 
-  async waitUntillPersistenceAnalysisResults(): Promise<void> {
+  async waitUntillPersistenceAnalysisResultsLoaded(): Promise<void> {
     await this.page.waitForSelector('[class="popup_heading"]');
   }
 

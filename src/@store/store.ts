@@ -5,6 +5,7 @@ import { configureStore, combineReducers, Reducer } from '@reduxjs/toolkit';
 import url from '@config/url';
 import Credential from '@models/login/credential';
 import credentialReducer from '@pages/common/credential.slice';
+import weatherAnalysisReportReducer from '@test-data/weatherAnalysis/weatherAnalysisReport.slice';
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export const getModulesReducers = () => {
@@ -18,8 +19,12 @@ export const getModulesReducers = () => {
   }
 
   return {
+
+    weatherAnalysis : weatherAnalysisReportReducer,
+
     credential: credentialReducer,
     credentialData: require(`./masterData/${target}/credential.master.slice`).default as Reducer<Credential>,
+    weatherAnalysisData: require(`./masterData/${target}/weather.analysis.master.slice`).default,
   };
 };
 
