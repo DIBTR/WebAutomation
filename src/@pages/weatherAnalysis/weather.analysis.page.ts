@@ -94,7 +94,16 @@ export default class WeatherAnalysisPage {
 
   async waitUntillPersistenceAnalysisResultsLoaded(): Promise<void> {
     await this.page.waitForSelector('[class="popup_heading"]');
+    await this.page.waitForSelector('[class="popup_footer"]>footer>button');
+    await this.page.evaluate(() => {
+      const targetElement = document.querySelector('[class="popup_footer"]>footer>button');
+      if (targetElement) {
+        console.log('Scrolling to the element');
+        targetElement.scrollIntoView();
+      }
+    });
   }
+
 
   async captureAndAssertGraphSnapshot(): Promise<void> {
     await expect(this.page.locator(this.weatherAnalysisMapSelector)).toBeVisible();
