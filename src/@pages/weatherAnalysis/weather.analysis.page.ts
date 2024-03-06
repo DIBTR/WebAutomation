@@ -9,6 +9,8 @@ export default class WeatherAnalysisPage {
   private readonly weatherAnalysisMapSelector = '[id="weatherAnalysis_plotlyPlots"]';
   private readonly persistentAnalysisResultsDialogueSelector =
     '[class="ReactModal__Overlay ReactModal__Overlay--after-open"]';
+  private readonly windHeightSelector = '[class*="-indicatorContainer"]';
+  private readonly windHeightDropDownSelector = '[class*="weatherOption"]>div>div>div~div>input';
 
   constructor(page: Page) {
     this.page = page;
@@ -32,16 +34,15 @@ export default class WeatherAnalysisPage {
     await this.page.locator(this.persistenceAnalysisCollapseSelector).click();
   }
 
-  async clickOnDropDown(nth : number): Promise<void> {
+  async clickOnDropDown(nth: number): Promise<void> {
     await this.page.locator('[class*="persistenceOption"]>div>div>div~div>input').nth(nth).click();
   }
 
   async selectWindHeight(windHeightToSelect: []): Promise<void> {
-    console.log(`Selecting wind height :: ${windHeightToSelect}`);
-    await this.page.locator('[class*="-indicatorContainer"]').nth(0).click();
+    await this.page.locator(this.windHeightSelector).nth(0).click();
     for (let i = 0; i < windHeightToSelect.length; i++) {
       console.log(`Selecting wind height :: ${windHeightToSelect[i]}`);
-      await this.page.locator('[class*="weatherOption"]>div>div>div~div>input').nth(0).click();
+      await this.page.locator(this.windHeightDropDownSelector).nth(0).click();
       await this.page.waitForTimeout(1000);
       await this.page.getByText(windHeightToSelect[i], { exact: true }).click();
       await this.page.waitForTimeout(1000);
@@ -103,7 +104,6 @@ export default class WeatherAnalysisPage {
       }
     });
   }
-
 
   async captureAndAssertGraphSnapshot(): Promise<void> {
     await expect(this.page.locator(this.weatherAnalysisMapSelector)).toBeVisible();
