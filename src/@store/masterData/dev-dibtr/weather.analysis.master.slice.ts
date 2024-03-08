@@ -22,9 +22,3 @@ const weatherAnalysisMasterSlice = createSlice({
 });
 
 export default weatherAnalysisMasterSlice.reducer;
-
-// Enroll and login as user
-// Value assertion
-// Provide some details about whats happening in test
-// html report
-// video recording
