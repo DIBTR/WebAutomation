@@ -1,6 +1,7 @@
 import { Page } from '@playwright/test';
 import { url } from '@config';
 import { LoginPage } from '@pages/common';
+import HomePage from '@pages/common/home.page';
 
 export default class LoginHelper {
   readonly page: Page;
@@ -23,5 +24,11 @@ export default class LoginHelper {
     await new LoginPage(this.page).enterUsername(username);
     await new LoginPage(this.page).enterPassword(password);
     await new LoginPage(this.page).clickSignIn();
+  }
+
+  async performLogin(username: string, password: string): Promise<void> {
+    await new HomePage(this.page).enterUsername(username);
+    await new HomePage(this.page).enterPassword(password);
+    await new HomePage(this.page).clickSignIn();
   }
 }

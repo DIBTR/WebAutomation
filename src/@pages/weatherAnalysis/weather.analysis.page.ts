@@ -9,6 +9,7 @@ export default class WeatherAnalysisPage {
   private readonly weatherAnalysisMapSelector = '[id="weatherAnalysis_plotlyPlots"]';
   private readonly persistentAnalysisResultsDialogueSelector =
     '[class="ReactModal__Overlay ReactModal__Overlay--after-open"]';
+  private readonly persistentAnalysisResultSummaryTabAndCustomTableSelector = '[class="probability_output"]';
   private readonly windHeightSelector = '[class*="-indicatorContainer"]';
   private readonly windHeightDropDownSelector = '[class*="weatherOption"]>div>div>div~div>input';
 
@@ -44,8 +45,8 @@ export default class WeatherAnalysisPage {
       console.log(`Selecting wind height :: ${windHeightToSelect[i]}`);
       await this.page.locator(this.windHeightDropDownSelector).nth(0).click();
       await this.page.waitForTimeout(1000);
-      await this.page.getByText(windHeightToSelect[i], { exact: true }).click();
-      await this.page.waitForTimeout(1000);
+      await this.page.getByText(windHeightToSelect[i], { exact: true }).first().click();
+      await this.page.waitForTimeout(5000);
     }
   }
 
@@ -91,6 +92,7 @@ export default class WeatherAnalysisPage {
 
   async clickOnRunAnalysis(): Promise<void> {
     await this.page.getByRole('button', { name: 'Run Analysis' }).click();
+    await this.page.waitForTimeout(10000);
   }
 
   async waitUntillPersistenceAnalysisResultsLoaded(): Promise<void> {
@@ -116,14 +118,45 @@ export default class WeatherAnalysisPage {
       });
   }
 
-  async captureAndAssertPersistentAnalysisResultsDialogueSnapshot(): Promise<void> {
+  async captureAndAssertPersistentAnalysisResultsSummaryTab(): Promise<void> {
     await expect(this.page.locator(this.persistentAnalysisResultsDialogueSelector)).toBeVisible();
     expect
       .soft(
         await this.page
-          .locator(this.persistentAnalysisResultsDialogueSelector)
-          .screenshot({ path: 'baseline-screenshots/result.png' })
+          .locator(this.persistentAnalysisResultSummaryTabAndCustomTableSelector)
+          .first()
+          .screenshot({ path: 'baseline-screenshots/result-summaryTab.png' })
       )
       .toMatchSnapshot();
+  }
+
+  async captureAndAssertPersistentAnalysisResultsDialogueSnapshot(): Promise<void> {
+    await this.waitUntillPersistenceAnalysisResultsLoaded();
+    await expect(this.page.locator(this.persistentAnalysisResultsDialogueSelector)).toBeVisible();
+    expect
+      .soft(
+        await this.page
+          .locator(this.persistentAnalysisResultSummaryTabAndCustomTableSelector)
+          .nth(1)
+          .screenshot({ path: 'baseline-screenshots/result-customTable.png' })
+      )
+      .toMatchSnapshot();
+  }
+
+  async validate8HourWindowResults(expectedResultsFor8Window: []): Promise<void> {
+    for (let i = 0; i < expectedResultsFor8Window.length; i++) {
+      const actualValue = await this.page
+        .locator('tbody[class*="MuiTableBody-root"]>tr:nth-child(1)>td')
+        .nth(i)
+        .textContent();
+      expect
+        .soft(
+          Number(actualValue),
+          `Checking does actual value : ${Number(
+            actualValue
+          )}, matching with expected value : ${expectedResultsFor8Window[i]}`
+        )
+        .toBe(expectedResultsFor8Window[i]);
+    }
   }
 }

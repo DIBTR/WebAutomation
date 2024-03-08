@@ -2,7 +2,6 @@ import { test } from '@playwright/test';
 import LoginHelper from '@helpers/common/loginHelper';
 import ZephyrReporter from '@utils/ZReporter';
 import PrivactCookiePage from '@pages/common/privacy-cookie.page';
-import HomePage from '@pages/common/home.page';
 import SideBarPage from '@pages/common/side.bar.page';
 import WeatherAnalysisPage from '@pages/weatherAnalysis/weather.analysis.page';
 import store from '@store/store';
@@ -14,26 +13,32 @@ test.describe('@smokeSuite', () => {
   });
 
   test('[TC-XXX] - Should be able to run Persistance weather analysis with 8 hr window @smoke', async ({ page }) => {
-
     store.dispatch(setPersistentAnalysisReport(store.getState()));
     const {
       weatherAnalysis: {
-        details: {
-          forPersistenceAnalysisReport
-        },
+        details: { forPersistenceAnalysisReport },
       },
     } = store.getState();
+
+    console.log(forPersistenceAnalysisReport.persistenceAnalysis);
+    console.log(forPersistenceAnalysisReport.locationDetails)
 
     await test.step(`Given the user navigates to the home page`, async () => {
       await new LoginHelper(page).launchApplication();
     });
 
-    await test.step(`When User accepts cookies and select Continue as Guest option`, async () => {
+    await test.step(`When User accepts cookies and login to application using valid credentials`, async () => {
       await new PrivactCookiePage(page).clickOnAcceptCookies();
-      await new HomePage(page).clickOnContinueAsGuest();
+      const { credentialData } = store.getState();
+      await new LoginHelper(page).performLogin(
+        credentialData.enrolled_user.username,
+        credentialData.enrolled_user.password
+      );
     });
 
-    await test.step(`And When a user selects a location on the map using coordinates ${JSON.stringify(forPersistenceAnalysisReport.locationDetails)}`, async () => {
+    await test.step(`And When a user selects a location on the map using coordinates ${JSON.stringify(
+      forPersistenceAnalysisReport.locationDetails
+    )}`, async () => {
       await new SideBarPage(page).clickOnWeatherAnalysisSelector();
       await new WeatherAnalysisPage(page).clickOnLocationOnMap(forPersistenceAnalysisReport.locationDetails);
     });
@@ -42,19 +47,28 @@ test.describe('@smokeSuite', () => {
       await new WeatherAnalysisPage(page).captureAndAssertGraphSnapshot();
     });
 
-    await test.step(`And When the user runs Persistence Weather Analysis with ${JSON.stringify(forPersistenceAnalysisReport.persistenceAnalysis)} window`, async () => {
+    await test.step(`And When the user runs Persistence Weather Analysis with ${JSON.stringify(
+      forPersistenceAnalysisReport.persistenceAnalysis
+    )} window`, async () => {
       await new WeatherAnalysisPage(page).clickOnPersistenceAnalysis();
       await new WeatherAnalysisPage(page).selectWindHeight(forPersistenceAnalysisReport.windHeight);
-      await new WeatherAnalysisPage(page).selectWeatherWindow(forPersistenceAnalysisReport.persistenceAnalysis.weatherWindow);
-      await new WeatherAnalysisPage(page).selectSignificantWaveHeight(forPersistenceAnalysisReport.persistenceAnalysis.significantWaveHeight);
+      await new WeatherAnalysisPage(page).selectWeatherWindow(
+        forPersistenceAnalysisReport.persistenceAnalysis.weatherWindow
+      );
+      await new WeatherAnalysisPage(page).selectSignificantWaveHeight(
+        forPersistenceAnalysisReport.persistenceAnalysis.significantWaveHeight
+      );
       await new WeatherAnalysisPage(page).selectWavePeriod(forPersistenceAnalysisReport.persistenceAnalysis.wavePeriod);
-      await new WeatherAnalysisPage(page).selectMeanWindSpeed(forPersistenceAnalysisReport.persistenceAnalysis.meanWindSpeed);
+      await new WeatherAnalysisPage(page).selectMeanWindSpeed(
+        forPersistenceAnalysisReport.persistenceAnalysis.meanWindSpeed
+      );
       await new WeatherAnalysisPage(page).clickOnRunAnalysis();
     });
 
     await test.step(`Then capture and assert the Persistent Analysis Results Dialogue view for correctness`, async () => {
-      await new WeatherAnalysisPage(page).waitUntillPersistenceAnalysisResultsLoaded();
+      await new WeatherAnalysisPage(page).captureAndAssertPersistentAnalysisResultsSummaryTab();
       await new WeatherAnalysisPage(page).captureAndAssertPersistentAnalysisResultsDialogueSnapshot();
+      await new WeatherAnalysisPage(page).validate8HourWindowResults(forPersistenceAnalysisReport.expectedResultsFor8Window);
     });
   });
 });

@@ -19,6 +19,7 @@ const weatherAnalysis = createSlice({
           wavePeriod: weatherAnalysisData.persistenceAnalysis.wavePeriod,
           meanWindSpeed: weatherAnalysisData.persistenceAnalysis.meanWindSpeed,
         },
+        expectedResultsFor8Window: weatherAnalysisData.expectedResultsFor8Window,
        
       };
       state.details.forPersistenceAnalysisReport = forPersistenceAnalysisReport;

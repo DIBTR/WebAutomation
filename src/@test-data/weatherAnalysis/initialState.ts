@@ -13,6 +13,7 @@ const initialState: PersistenceAnalysisReport = {
         wavePeriod: [''],
         meanWindSpeed: [''],
       },
+      expectedResultsFor8Window: [],
     },
   },
 };

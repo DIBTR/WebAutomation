@@ -10,4 +10,5 @@ export default interface ForPersistenceAnalysisReport {
     wavePeriod: [''],
     meanWindSpeed: ['']
   }
+  expectedResultsFor8Window: []
 }
