@@ -3,13 +3,15 @@ import { devices } from '@playwright/test';
 import { browserStackConfig, caps, localConfig } from './browserstack.config';
 import dotenv from 'dotenv';
 dotenv.config();
-const apiKey = process.env.REPORT_PORTAL_API_KEY;  // please keep api key in .env file or set it as environment variable.
+const apiKey = process.env.REPORT_PORTAL_API_KEY; // please keep api key in .env file or set it as environment variable.
 const REPORT_TYPE = process.env.REPORT_TYPE || '';
+const LOG_RESULT_TO_REPORT_PORTAL = process.env.LOG_RESULT_TO_REPORT_PORTAL || 'false';
+const RUN_ON_BROWSERSTACK = process.env.RUN_ON_BROWSERSTACK || 'false';
 
 
 const rpConfig = {
   apiKey: apiKey,
-  endpoint: 'http://35.214.28.20:8080/api/v1',
+  endpoint: 'http://34.107.186.225/api/v1',
   project: 'default_personal',
   launch: `Automation Run ${new Date().toLocaleDateString()}`,
   restClientConfig: {
@@ -49,14 +51,14 @@ const config: PlaywrightTestConfig = {
   workers: process.env.CI ? 5 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter:
-    process.env.LOG_RESULT_TO_REPORT_PORTAL === 'true'
+    LOG_RESULT_TO_REPORT_PORTAL === 'true'
       ? [
           ['@reportportal/agent-js-playwright', rpConfig],
           ['list'],
           ['html', { outputFolder: `playwright-report/${REPORT_TYPE}`, open: 'never' }],
         ]
       : [['list'], ['html', { outputFolder: `playwright-report/${REPORT_TYPE}`, open: 'never' }]],
-      
+
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     viewport: null,
@@ -133,7 +135,7 @@ const config: PlaywrightTestConfig = {
   // },
 };
 
-if (process.env.RUN_ON_BROWSERSTACK === 'true') {
+if (RUN_ON_BROWSERSTACK === 'true') {
   console.log(`User selected execution platform Browserstack`);
   module.exports = process.env.RUN_ON_BROWSERSTACK === 'true' ? browserStackConfig : localConfig;
 } else {
