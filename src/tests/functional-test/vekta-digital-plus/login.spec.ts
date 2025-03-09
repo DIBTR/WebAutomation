@@ -5,7 +5,7 @@ import CommonPage from '@pages/common/common.page';
 import store from '@store/store';
 import ZephyrReporter from '@utils/ZReporter';
 
-test.describe('@smokeSuite', () => {
+test.describe('@smokeSuite @loginModule @vektaDigitalPlus', () => {
   test.afterEach(async ({ page }, testInfo) => {
     const screenshot = await page.screenshot();
     await testInfo.attach('screenshot', { body: screenshot, contentType: 'image/png' });

@@ -7,14 +7,14 @@ import GraphViewPage from '@pages/common/graph.view.page';
 import store from '@store/store';
 import ZephyrReporter from '@utils/ZReporter';
 
-test.describe('@smokeSuite', () => {
+test.describe('@smokeSuite @siteCreationFlow @vektaDigitalPlus', () => {
   test.afterEach(async ({ page }, testInfo) => {
     const screenshot = await page.screenshot();
     await testInfo.attach('screenshot', { body: screenshot, contentType: 'image/png' });
     await new ZephyrReporter().updateTestResultInZephyr(testInfo.title, testInfo.status);
   });
 
-  test('[TC-XXX] - Should be able to create a site @smoke', async ({ page }) => {
+  test('[TC-XXX] - User should be able to create a site @smoke', async ({ page }) => {
     const { credentialData } = store.getState();
 
     await test.step(`Given the user navigates to the login page`, async () => {
