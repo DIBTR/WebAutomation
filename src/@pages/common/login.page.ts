@@ -8,15 +8,15 @@ export default class LoginPage {
   }
 
   async enterUsername(email: string): Promise<void> {
-    await this.page.getByPlaceholder('Username').fill(email);
+    await this.page.locator(`[id="toolLogin_email"]`).fill(email);
   }
 
   async enterPassword(password: string): Promise<void> {
-    await this.page.getByPlaceholder('Password').fill(password);
+    await this.page.locator(`[id="toolLogin_password"]`).fill(password);
   }
 
   async clickSignIn(): Promise<void> {
-    await this.page.locator('[data-test="login-button"]').click();
+    await this.page.locator(`//*[text()='Login']`).click();
   }
 
   async login(username: string, password: string): Promise<void> {
@@ -26,10 +26,11 @@ export default class LoginPage {
       await this.clickSignIn();
     });
   }
+
   async isDataPresent(dataToCheck: string): Promise<void> {
     await expect(
       this.page.getByText(`${dataToCheck}`),
-      `Failed to check presence of data :: ${dataToCheck}`
+      `Checking presence of data :: ${dataToCheck}`
     ).toBeVisible();
   }
 }

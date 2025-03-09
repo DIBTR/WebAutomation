@@ -1,7 +1,7 @@
 export default {
     standard: {
       inventory: {
-        slug: /\/inventory/i,
+        slug: /\/vekta-digital+/i,
       },
     }
   };
