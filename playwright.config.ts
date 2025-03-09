@@ -80,9 +80,9 @@ const config: PlaywrightTestConfig = {
       use: {
         channel: 'chrome',
         viewport: null,
-        launchOptions: {
-          args: ['--start-maximized'],
-        },
+        // launchOptions: {
+        //   args: ['--start-maximized'],
+        // },
         headless: process.env.CI == 'true' ? true : false,
         trace: 'off',
         video: 'off',
