@@ -22,10 +22,10 @@
   "homepage": "",
   "devDependencies": {
     "@faker-js/faker": "^7.6.0",
-    "@playwright/test": "^1.39.0",
+    "@playwright/test": "^1.51.0",
     "@reportportal/agent-js-playwright": "^5.1.6",
     "@types/lodash": "^4.14.191",
-    "@types/node": "^17.0.17",
+    "@types/node": "^17.0.45",
     "@types/ramda": "^0.28.20",
     "@typescript-eslint/eslint-plugin": "^5.45.0",
     "@typescript-eslint/parser": "^5.12.0",
