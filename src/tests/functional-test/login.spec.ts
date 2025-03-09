@@ -32,7 +32,7 @@ test.describe('@smokeSuite', () => {
     });
   });
 
-  test.only('[TC-XXX] - Should not be able to successful login with invalid credentials @smoke', async ({ page }) => {
+  test('[TC-XXX] - Should not be able to successful login with invalid credentials @smoke', async ({ page }) => {
     const { credentialData } = store.getState();
 
     let dialogMessage = '';

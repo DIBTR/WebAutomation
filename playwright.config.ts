@@ -79,6 +79,10 @@ const config: PlaywrightTestConfig = {
       name: process.env.ENV_EXECUTION === 'develop' ? 'Develop' : 'Dev',
       use: {
         channel: 'chrome',
+        viewport: null,
+        launchOptions: {
+          args: ['--start-maximized'],
+        },
         headless: process.env.CI == 'true' ? true : false,
         trace: 'off',
         video: 'off',
