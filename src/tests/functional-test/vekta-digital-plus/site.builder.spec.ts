@@ -14,7 +14,7 @@ test.describe('@smokeSuite @siteCreationFlow @vektaDigitalPlus', () => {
     await new ZephyrReporter().updateTestResultInZephyr(testInfo.title, testInfo.status);
   });
 
-  test('[TC-XXX] - User should be able to create a site @smoke', async ({ page }) => {
+  test('[TC-XXX] - User should be able to create a site with Default SITE BUILDER OPTIONS @smoke', async ({ page }) => {
     const { credentialData } = store.getState();
 
     await test.step(`Given the user navigates to the login page`, async () => {
@@ -42,8 +42,7 @@ test.describe('@smokeSuite @siteCreationFlow @vektaDigitalPlus', () => {
     await test.step(`Then user should be able to see created site on Map`, async () => {
       await new GraphViewPage(page).isSiteCreatedOnMap();
       await new GraphViewPage(page).clicOnSiteCreatedOnMap();
-      await page.waitForTimeout(8000);
-      const element = page.locator('[class="leaflet-interactive"]').first();
+      const element = await new GraphViewPage(page).getPlottedSite();
       await expect(element).toHaveScreenshot('site-with-default.png');
       await page.waitForTimeout(8000);
     });
