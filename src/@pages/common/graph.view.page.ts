@@ -18,6 +18,10 @@ export default class GraphViewPage {
     await expect(this.page.locator(`img[class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive"]`)).toBeVisible();
   }
 
+  async clicOnSiteCreatedOnMap() : Promise <void> {
+    await this.page.locator(`img[class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive"]`).click();
+  }
+
   async createSite() : Promise<void> {
     await this.page.getByText('Click map to build').click();
     await this.page.waitForTimeout(2000);

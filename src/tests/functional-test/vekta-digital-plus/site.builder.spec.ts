@@ -31,7 +31,6 @@ test.describe('@smokeSuite @siteCreationFlow @vektaDigitalPlus', () => {
     await test.step(`Then user should be logged in successfully`, async () => {
       await expect(page).toHaveURL(paths.standard.inventory.slug);
       await new CommonPage(page).isDataPresent('Layer Control');
-      await page.waitForTimeout(30000);
     });
 
     await test.step(`When user creates site`, async () => {
@@ -42,6 +41,11 @@ test.describe('@smokeSuite @siteCreationFlow @vektaDigitalPlus', () => {
 
     await test.step(`Then user should be able to see created site on Map`, async () => {
       await new GraphViewPage(page).isSiteCreatedOnMap();
+      await new GraphViewPage(page).clicOnSiteCreatedOnMap();
+      await page.waitForTimeout(8000);
+      const element = page.locator('[class="leaflet-interactive"]').first();
+      await expect(element).toHaveScreenshot('site-with-default.png');
+      await page.waitForTimeout(8000);
     });
   });
 });
