@@ -43,7 +43,7 @@ test.describe('@smokeSuite @siteCreationFlow @vektaDigitalPlus', () => {
       await new GraphViewPage(page).isSiteCreatedOnMap();
       await new GraphViewPage(page).clicOnSiteCreatedOnMap();
       const element = await new GraphViewPage(page).getPlottedSite();
-      await expect(element).toHaveScreenshot('site-with-default.png');
+      await expect(element).toHaveScreenshot('site-with-default.png', { threshold: 0.10 });
       await page.waitForTimeout(8000);
     });
   });
