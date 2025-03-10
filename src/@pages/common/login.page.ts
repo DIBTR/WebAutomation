@@ -28,9 +28,18 @@ export default class LoginPage {
   }
 
   async isDataPresent(dataToCheck: string): Promise<void> {
-    await expect(
-      this.page.getByText(`${dataToCheck}`),
-      `Checking presence of data :: ${dataToCheck}`
-    ).toBeVisible();
+    await expect(this.page.getByText(`${dataToCheck}`), `Checking presence of data :: ${dataToCheck}`).toBeVisible();
+  }
+
+  async clickOnForgotPassword(): Promise<void> {
+    await this.page.locator(`[class="forgottenPassword"]`).click();
+  }
+
+  async enterAccountEmail(email: string): Promise<void> {
+    await this.page.locator(`[for="forgotEmail"]`).fill(email);
+  }
+
+  async clickSendEmail(): Promise<void> {
+    await this.page.getByText(`Send Email`, { exact: true }).click();
   }
 }
