@@ -41,7 +41,7 @@ test.describe('@smokeSuite @siteCreationFlow @vektaDigitalPlus', () => {
 
     await test.step(`Then user should be able to see created site on Map`, async () => {
       await new GraphViewPage(page).isSiteCreatedOnMap();
-      await new GraphViewPage(page).clicOnSiteCreatedOnMap();
+      await new GraphViewPage(page).clickOnSiteCreatedOnMap();
       const element = await new GraphViewPage(page).getPlottedSite();
       await expect(element).toHaveScreenshot('site-with-default.png', { threshold: 0.10 });
       await page.waitForTimeout(8000);

@@ -18,7 +18,7 @@ export default class GraphViewPage {
     await expect(this.page.locator(this.mapView)).toBeVisible();
   }
 
-  async clicOnSiteCreatedOnMap(): Promise<void> {
+  async clickOnSiteCreatedOnMap(): Promise<void> {
     await this.page.locator(this.mapView).click();
     await this.page.waitForTimeout(8000);
   }
