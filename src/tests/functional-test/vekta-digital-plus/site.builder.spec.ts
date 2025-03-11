@@ -60,7 +60,7 @@ test.describe('@smokeSuite @siteCreationFlow @vektaDigitalPlus', () => {
     });
   });
 
-  test.only('[TC-7] - Verify user should be able to create a site with custom options @smoke', async ({ page }) => {
+  test('[TC-7] - Verify user should be able to create a site with custom options @smoke', async ({ page }) => {
     store.dispatch(setSiteBuilderOptionsCustom());
     const {
       siteWorkflow: {
