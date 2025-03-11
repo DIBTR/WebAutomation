@@ -8,8 +8,8 @@ test.describe('@smokeSuite @forgotPassword @vektaDigitalPlus', () => {
     const screenshot = await page.screenshot();
     await testInfo.attach('screenshot', { body: screenshot, contentType: 'image/png' });
   });
-
-  test('[TC-XXX] - User sees inline validation message when using an unregistered email  @smoke', async ({ page }) => {
+  
+  test('[TC-6] - Verify that the user sees an inline validation message when using an unregistered email for the forgot password feature  @smoke', async ({ page }) => {
     await test.step(`Given The user is on the "Forgot Password" page`, async () => {
       await new LoginHelper(page).launchApplication();
     });

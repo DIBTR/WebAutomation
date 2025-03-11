@@ -12,7 +12,7 @@ test.describe('@smokeSuite @loginModule @vektaDigitalPlus', () => {
     await new ZephyrReporter().updateTestResultInZephyr(testInfo.title, testInfo.status);
   });
 
-  test('[TC-XXX] - Should be able to successful login with valid credentials @smoke', async ({ page }) => {
+  test('[TC-1] - Should be able to successful login with valid credentials @smoke', async ({ page }) => {
     const { credentialData } = store.getState();
 
     await test.step(`Given the user navigates to the login page`, async () => {
@@ -32,7 +32,31 @@ test.describe('@smokeSuite @loginModule @vektaDigitalPlus', () => {
     });
   });
 
-  test('[TC-XXX] - Should not be able to successful login with invalid credentials @smoke', async ({ page }) => {
+  test('[TC-2] - Should not be able to login with valid email and invalid password @smoke', async ({ page }) => {
+    const { credentialData } = store.getState();
+
+    let dialogMessage = '';
+
+    page.on('dialog', async (dialog) => {
+      dialogMessage = dialog.message();
+      await dialog.accept();
+    });
+
+    await test.step(`Given the user navigates to the login page`, async () => {
+      await new LoginHelper(page).launchApplication();
+    });
+
+    await test.step(`When user enter valid email and invalid password and click on Sign-In`, async () => {
+      await new LoginHelper(page).tryLogin(credentialData.standard_user.username, credentialData.invalid_user.password);
+      await page.waitForTimeout(5000);
+    });
+
+    await test.step(`Then user should see an error message`, async () => {
+      expect(dialogMessage).toBe('Firebase: Error (auth/wrong-password).');
+    });
+  });
+
+  test('[TC-4] - Should not be able to successful login with invalid credentials @smoke', async ({ page }) => {
     const { credentialData } = store.getState();
 
     let dialogMessage = '';
@@ -55,4 +79,29 @@ test.describe('@smokeSuite @loginModule @vektaDigitalPlus', () => {
       expect(dialogMessage).toBe('Firebase: Error (auth/invalid-email).');
     });
   });
+
+  test('[TC-5] - Should not be able to successful login without proving login email and password @smoke', async ({ page }) => {
+    const { credentialData } = store.getState();
+
+    let dialogMessage = '';
+
+    page.on('dialog', async (dialog) => {
+      dialogMessage = dialog.message();
+      await dialog.accept();
+    });
+
+    await test.step(`Given the user navigates to the login page`, async () => {
+      await new LoginHelper(page).launchApplication();
+    });
+
+    await test.step(`When user enter invalid credentials and click on Sign-In`, async () => {
+      await new LoginHelper(page).tryLogin(credentialData.invalid_user.username, credentialData.invalid_user.password);
+      await page.waitForTimeout(5000);
+    });
+
+    await test.step(`Then user should see an error message`, async () => {
+      expect(dialogMessage).toBe('Firebase: Error (auth/invalid-email).');
+    });
+  });
+     
 });
