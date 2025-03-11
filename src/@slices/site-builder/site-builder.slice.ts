@@ -3,8 +3,8 @@ import { createSlice } from '@reduxjs/toolkit';
 import ForSiteBuildOptionsPopup from '@models/ForSiteBuildOptionsPopup';
 import initialState from './initialState';
 
-const bookInSlice = createSlice({
-  name: 'bookInEnquiry',
+const siteSlice = createSlice({
+  name: 'siteWorkflow',
   initialState,
   reducers: {
     setSiteBuilderOptionsDefault: (state) => {
@@ -29,6 +29,6 @@ const bookInSlice = createSlice({
 
 export const {
   setSiteBuilderOptionsDefault,
-} = bookInSlice.actions;
+} = siteSlice.actions;
 
-export default bookInSlice.reducer;
+export default siteSlice.reducer;
