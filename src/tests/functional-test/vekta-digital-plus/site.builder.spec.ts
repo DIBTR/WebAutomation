@@ -12,7 +12,7 @@ test.describe('@smokeSuite @siteCreationFlow @vektaDigitalPlus', () => {
     await testInfo.attach('screenshot', { body: screenshot, contentType: 'image/png' });
   });
 
-  test('[TC-XXX] - User should be able to create a site with Default SITE BUILDER OPTIONS @smoke', async ({ page }) => {
+  test('[TC-3] - Verify user should be able to create a site with Default SITE BUILDER OPTIONS @smoke', async ({ page }) => {
     const { credentialData } = store.getState();
 
     await test.step(`Given the user navigates to the login page`, async () => {
