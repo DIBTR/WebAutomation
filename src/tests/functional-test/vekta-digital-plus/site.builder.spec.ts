@@ -4,6 +4,7 @@ import LoginHelper from '@helpers/common/loginHelper';
 import CommonPage from '@pages/common/common.page';
 import DrawControlMenuPage from '@pages/common/draw.control.page';
 import GraphViewPage from '@pages/common/graph.view.page';
+import { setSiteBuilderOptionsDefault } from '@slices/site-builder/site-builder.slice';
 import store from '@store/store';
 
 test.describe('@smokeSuite @siteCreationFlow @vektaDigitalPlus', () => {
@@ -12,7 +13,18 @@ test.describe('@smokeSuite @siteCreationFlow @vektaDigitalPlus', () => {
     await testInfo.attach('screenshot', { body: screenshot, contentType: 'image/png' });
   });
 
-  test('[TC-3] - Verify user should be able to create a site with Default SITE BUILDER OPTIONS @smoke', async ({ page }) => {
+  test('[TC-3] - Verify user should be able to create a site with Default SITE BUILDER OPTIONS @smoke', async ({
+    page,
+  }) => {
+    store.dispatch(setSiteBuilderOptionsDefault());
+    const {
+      bookInEnquiry: {
+        details: { forSiteBuildOptionsPopup },
+      },
+    } = store.getState();
+
+    console.log(forSiteBuildOptionsPopup);
+
     const { credentialData } = store.getState();
 
     await test.step(`Given the user navigates to the login page`, async () => {
@@ -41,7 +53,7 @@ test.describe('@smokeSuite @siteCreationFlow @vektaDigitalPlus', () => {
       await new GraphViewPage(page).isSiteCreatedOnMap();
       await new GraphViewPage(page).clickOnSiteCreatedOnMap();
       const element = await new GraphViewPage(page).getPlottedSite();
-      await expect(element).toHaveScreenshot('site-with-default.png', { threshold: 0.10 });
+      await expect(element).toHaveScreenshot('site-with-default.png', { threshold: 0.1 });
       await page.waitForTimeout(8000);
     });
   });
