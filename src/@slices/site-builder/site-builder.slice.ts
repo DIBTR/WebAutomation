@@ -28,10 +28,27 @@ const siteSlice = createSlice({
     setSiteBuilderOptionsCustom: (state) => {
       const forSiteBuilderOptionsPopup: ForSiteBuildOptionsPopup = {
         siteName: faker.company.name(),
+        gridFormat: 'Square',
+        placementAlignment: '',
+        rows: 5,
+        columns: 5,
+        sitePlace: 'Offshore',
+        turbineSelection: '',
+        turbineSpacing: '1200',
+        siteInsetBuffer: '2500',
+        turbineAngle: '',
+      };
+
+      state.details.forSiteBuildOptionsPopup = forSiteBuilderOptionsPopup;
+    },
+
+    setSiteBuilderOptionsCustomHex: (state) => {
+      const forSiteBuilderOptionsPopup: ForSiteBuildOptionsPopup = {
+        siteName: faker.company.name(),
         gridFormat: 'Hex',
         placementAlignment: 'Point of Click',
-        rows: 3,
-        columns: 3,
+        rows: 5,
+        columns: 5,
         sitePlace: 'Offshore',
         turbineSelection: '0.66MW 47m VG Generic *',
         turbineSpacing: '1500',
@@ -41,9 +58,26 @@ const siteSlice = createSlice({
 
       state.details.forSiteBuildOptionsPopup = forSiteBuilderOptionsPopup;
     },
+
+    setFullSite: (state) => {
+      const forSiteBuilderOptionsPopup: ForSiteBuildOptionsPopup = {
+        siteName: faker.company.name(),
+        gridFormat: 'Square',
+        placementAlignment: 'Center of Click/Shape',
+        rows: 5,
+        columns: 5,
+        sitePlace: 'Offshore',
+        turbineSelection: '0.66MW 47m VG Generic *',
+        turbineSpacing: '1200',
+        siteInsetBuffer: '2500',
+        turbineAngle: '',
+      };
+
+      state.details.forSiteBuildOptionsPopup = forSiteBuilderOptionsPopup;
+    },
   },
 });
 
-export const { setSiteBuilderOptionsDefault, setSiteBuilderOptionsCustom } = siteSlice.actions;
+export const { setSiteBuilderOptionsDefault, setSiteBuilderOptionsCustom, setSiteBuilderOptionsCustomHex } = siteSlice.actions;
 
 export default siteSlice.reducer;

@@ -15,18 +15,19 @@ export default class SiteBuilderHelper {
   }: {
     forSiteBuildOptionsPopup: ForSiteBuildOptionsPopup;
   }): Promise<void> {
-
     await new DrawControlMenuPage(this.page).openSiteBuilderPoup();
     await new SiteBuilderOptionPage(this.page).enterSiteName(forSiteBuildOptionsPopup.siteName);
     // TODO : This will work after developer fix  the issue https://github.com/Vekta-Group/QAQC/issues/43
-    // await new SiteBuilderOptionPage(this.page).selectGridFormat(forSiteBuildOptionsPopup.gridFormat);
-    // await new SiteBuilderOptionPage(this.page).selectPlacementAlignment(forSiteBuildOptionsPopup.placementAlignment);
+    await new SiteBuilderOptionPage(this.page).selectGridFormat(forSiteBuildOptionsPopup.gridFormat);
+    await new SiteBuilderOptionPage(this.page).selectPlacementAlignment(forSiteBuildOptionsPopup.placementAlignment);
     await new SiteBuilderOptionPage(this.page).enterRows(forSiteBuildOptionsPopup.rows.toString());
     await new SiteBuilderOptionPage(this.page).enterColumns(forSiteBuildOptionsPopup.columns.toString());
     await new SiteBuilderOptionPage(this.page).enterTurbineSelection(forSiteBuildOptionsPopup.turbineSelection);
     await new SiteBuilderOptionPage(this.page).enterTurbineSpacing(forSiteBuildOptionsPopup.turbineSpacing.toString());
-    await new SiteBuilderOptionPage(this.page).enterSiteInsetBuffer(forSiteBuildOptionsPopup.siteInsetBuffer.toString());
-    await new SiteBuilderOptionPage(this.page).enterTurbineAngle(forSiteBuildOptionsPopup.turbineAngle);  
+    await new SiteBuilderOptionPage(this.page).enterSiteInsetBuffer(
+      forSiteBuildOptionsPopup.siteInsetBuffer.toString()
+    );
+    await new SiteBuilderOptionPage(this.page).enterTurbineAngle(forSiteBuildOptionsPopup.turbineAngle);
     await new SiteBuilderOptionPage(this.page).clickOnCreateSite();
     await this.page.waitForTimeout(60000);
   }

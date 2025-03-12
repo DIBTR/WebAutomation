@@ -12,8 +12,8 @@ export default class LoginHelper {
 
   async launchApplication(): Promise<void> {
     await this.page.setViewportSize({
-      width: 1680, // min width should be 1680 to make sure web app does not change zoom
-      height: 800,
+      width: 1400, // min width should be 1680 to make sure web app does not change zoom
+      height: 720,
     });
 
     this.page.setDefaultNavigationTimeout(40000);
