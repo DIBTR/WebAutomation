@@ -17,6 +17,63 @@ export default class DrawControlMenuPage {
     await this.page.waitForTimeout(4000);
   }
 
+  async clickOnAnchor() : Promise<void> {
+    await this.page.locator('[title="Apply Anchors"]>svg').click();
+    await this.page.waitForTimeout(2000);
+  }
+
+  async clickOnCable() : Promise<void> {
+    await this.page.locator('[title="Place Cables"]>img').click();
+    await this.page.waitForTimeout(2000);
+  }
+
+  async clickOnPlaceOSP() : Promise<void> {
+    await this.page.locator('[data-testid="ElectricalServicesIcon"]').click();
+    await this.page.waitForTimeout(2000);
+  }
+
+  async clickOnOSPPencil() : Promise<void> {
+    await this.page.locator('[title="OSP Draw"]>[data-icon="pencil"]').click();
+    await this.page.waitForTimeout(2000);
+  }
+
+  async clickOnAddTurbineCluster() : Promise<void> {
+    await this.page.locator('[title="Add Turbine Cluster"]>svg>path').click();
+    await this.page.waitForTimeout(2000);
+  }
+
+  async clickOnPencilIconForCluster() : Promise<void> {
+    await this.page.locator('[title="Cluster Draw"]').click();
+    await this.page.waitForTimeout(2000);
+  }
+
+  async clickOnAutomaticClustering() : Promise<void> {
+    await this.page.locator('[title="Automatic Clustering"]').click();
+    await this.page.waitForTimeout(2000);
+  }
+
+  async clickOnPencilIconForPlaceCabel() : Promise<void> {
+    await this.page.locator('[data-icon="pencil"]').click();
+    await this.page.waitForTimeout(2000);
+  }
+
+  async clickOnAutomaticPlaceCabeling() : Promise<void> {
+    await this.page.locator('[title="Automatic Cable Placement"]>[data-icon="wand-magic-sparkles"]').click();
+    await this.page.waitForTimeout(2000);
+  }
+
+  async placeClustering() : Promise<void> {
+    await this.page.locator('[pointer-events="none"]>g>[class*=" leaflet-interactive"]').first().click();
+  }
+
+  async placeOSP() : Promise<void> {
+    await this.page.locator('[pointer-events="none"]>g>[class*=" leaflet-interactive"]').first().click();
+  }
+
+  async placeAnchor() : Promise<void> {
+    await this.page.locator('[pointer-events="none"]>g>[class*=" leaflet-interactive"]').first().click();
+  }
+
   async createSite(): Promise<void> {
     await this.page.getByText('Click map to build').click();
     await this.page.waitForTimeout(2000);

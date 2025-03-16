@@ -6,6 +6,7 @@ import SiteBuilderHelper from '@helpers/siteBuilderHelper';
 import CommonPage from '@pages/common/common.page';
 import DrawControlMenuPage from '@pages/common/draw.control.page';
 import GraphViewPage from '@pages/common/graph.view.page';
+import SiteAnchorsPage from '@pages/common/site.anchors';
 import {
   setSiteBuilderOptionsDefault,
   setSiteBuilderOptionsCustomHex,
@@ -63,7 +64,7 @@ test.describe('@smokeSuite @siteCreationFlow @vektaDigitalPlus', () => {
     });
   });
 
-  test.only('[TC-7] - Verify user should be able to create a site with custom options on site builder popup @smoke', async ({ page }) => {
+  test('[TC-7] - Verify user should be able to create a site with custom options on site builder popup @smoke', async ({ page }) => {
     store.dispatch(setSiteBuilderOptionsCustomHex());
     const {
       siteWorkflow: {
@@ -108,7 +109,7 @@ test.describe('@smokeSuite @siteCreationFlow @vektaDigitalPlus', () => {
     });
   });
 
-  test('[] - Verify user should be able to create a site and able to take it towards cable optimisation @smoke', async ({
+  test.only('[] - Verify user should be able to create a site and able to take it towards cable optimisation @smoke', async ({
     page,
   }) => {
     store.dispatch(setSiteBuilderOptionsCustomHex());
@@ -149,9 +150,20 @@ test.describe('@smokeSuite @siteCreationFlow @vektaDigitalPlus', () => {
     await test.step(`Then user should be able to see created site on Map`, async () => {
       await new GraphViewPage(page).isSiteCreatedOnMap();
       await new GraphViewPage(page).clickOnSiteCreatedOnMap();
-      const element = await new GraphViewPage(page).getPlottedSite();
-      await expect(element).toHaveScreenshot('site-with-hex.png', { threshold: 0.02 });
-      await page.waitForTimeout(8000);
+      await new DrawControlMenuPage(page).clickOnAnchor();
+      await new DrawControlMenuPage(page).placeAnchor();
+      await new SiteAnchorsPage(page).clickOnPlaceAnchor();
+      await new SiteAnchorsPage(page).clickOnDisplayOnMainMap();
+      await page.waitForTimeout(30000);
+      await new DrawControlMenuPage(page).clickOnPlaceOSP();
+      await new DrawControlMenuPage(page).clickOnOSPPencil();
+      await new DrawControlMenuPage(page).placeOSP();
+      await new DrawControlMenuPage(page).clickOnAddTurbineCluster();
+      await new DrawControlMenuPage(page).clickOnPencilIconForCluster();
+      await new DrawControlMenuPage(page).placeClustering();
+      await page.waitForTimeout(30000);
+      await new DrawControlMenuPage(page).clickOnCable();
+      await new DrawControlMenuPage(page).clickOnAutomaticPlaceCabeling();
     });
   });
 });

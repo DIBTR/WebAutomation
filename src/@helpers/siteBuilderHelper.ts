@@ -29,6 +29,6 @@ export default class SiteBuilderHelper {
     );
     await new SiteBuilderOptionPage(this.page).enterTurbineAngle(forSiteBuildOptionsPopup.turbineAngle);
     await new SiteBuilderOptionPage(this.page).clickOnCreateSite();
-    await this.page.waitForTimeout(60000);
+    await this.page.waitForTimeout(30000);
   }
 }
